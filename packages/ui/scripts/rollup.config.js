@@ -49,8 +49,8 @@ export default  [
     external: Object.keys(globals),
     plugins: [
       nodeResolve(nodeOptions),
-      babel(babelOptions),
       commonjs(commonjsOptions),
+      babel(babelOptions),
       nodeGlobals(),
     ]
   },
@@ -65,8 +65,8 @@ export default  [
     external: Object.keys(globals),
     plugins: [
       nodeResolve(nodeOptions),
-      babel(babelOptions),
       commonjs(commonjsOptions),
+      babel(babelOptions),
       nodeGlobals(),
     ]
   },

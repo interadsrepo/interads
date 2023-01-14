@@ -46,5 +46,9 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "dependencies": {
+    "@babel/runtime": "7.20.7",
+    "react-is": "^18.2.0"
   }
 }
