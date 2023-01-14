@@ -14,7 +14,7 @@ const globals = {
 const babelOptions = {
   exclude: /node_modules/,
   // runtimeHelpers: true,
-  babelHelpers: 'bundled',
+  babelHelpers: 'runtime',
   extensions: ['.js', '.ts', '.tsx'],
   configFile: path.resolve(__dirname, '../../../babel.config.js')
 }
