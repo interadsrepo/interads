@@ -1,3 +1,3 @@
-import * as React from 'react'
+import { ComponentPropsWithRef } from 'react'
 
-export interface ButtonProps extends React.ComponentPropsWithRef<'div'> {}
+export interface ButtonProps extends ComponentPropsWithRef<'div'> {}

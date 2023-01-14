@@ -20,18 +20,7 @@ const babelOptions = {
 }
 const commonjsOptions = {
   ignoreGlobal: true,
-  include: /node_modules/,
-  namedExports: {
-    '../../node_modules/react/jsx-runtime.js': ['jsx', 'jsxs'],
-    '../../node_modules/react-is/index.js': [
-      'ForwardRef',
-      'isFragment',
-      'isLazy',
-      'isMemo',
-      'Memo',
-      'isValidElementType',
-    ],
-  },
+  include: /node_modules/
 }
 const nodeOptions = {
   extensions: ['.js', '.tsx', '.ts'],

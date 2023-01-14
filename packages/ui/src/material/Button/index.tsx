@@ -1,9 +1,9 @@
-import * as React from 'react'
+import { FC } from 'react'
 
 import type { ButtonProps } from './props'
 import { IAButton } from './styled'
 
-export const Button: React.FC<ButtonProps> = function Button(props: ButtonProps) {
+export const Button: FC<ButtonProps> = function Button(props: ButtonProps) {
   return (
     <IAButton>
       This is Button

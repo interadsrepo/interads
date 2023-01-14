@@ -105,6 +105,8 @@ module.exports = {
     ],
     // Can add verbosity to small functions making them harder to grok.
     // Though we have to manually enforce it for function components with default values.
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off",
     'react/destructuring-assignment': 'off',
     'react/forbid-prop-types': 'off', // Too strict, no time for that
     'react/jsx-curly-brace-presence': 'off', // broken
