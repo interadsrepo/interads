@@ -1,0 +1,47 @@
+{
+  "name": "@interads/ui",
+  "version": "0.0.0",
+  "description": "interads ui",
+  "author": "pratamaizzat <pratama.izzat231298@gmail.com>",
+  "homepage": "",
+  "license": "MIT",
+  "main": "lib/index.cjs.js",
+  "module": "lib/index.esm.js",
+  "browser": "lib/index.iife.js",
+  "types": "lib/types/index.d.ts",
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "pnpm run type-check --watch",
+    "prebuild": "rimraf lib tsconfig.build.tsbuildinfo",
+    "build": "pnpm run build:types && pnpm run build:js",
+    "build:types": "tsc --project tsconfig.build.json",
+    "build:js": "cross-env BABEL_ENV=stable rollup -c scripts/rollup.config.js"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-is": "^18.2.0",
+    "styled-components": "^5.3.6",
+    "@types/react": "^18.0.26",
+    "@types/react-dom": "^18.0.10",
+    "@types/react-is": "^17.0.3",
+    "@types/styled-components": "^5.1.26"
+  },
+  "peerDependenciesMeta": {
+    "@types/react": {
+      "optional": true
+    },
+    "@types/styled-components": {
+      "optional": true
+    },
+    "styled-components": {
+      "optional": true
+    }
+  }
+}
