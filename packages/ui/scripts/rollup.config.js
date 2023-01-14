@@ -43,36 +43,52 @@ export default  [
       nodeGlobals(),
     ]
   },
-  {
-    input,
-    output: {
-      file: pkg.module,
-      format: 'es',
-      name: 'InteradsUI',
-      globals,
-    },
-    external: Object.keys(globals),
-    plugins: [
-      nodeResolve(nodeOptions),
-      commonjs(commonjsOptions),
-      babel(babelOptions),
-      nodeGlobals(),
-    ]
-  },
-  {
-    input,
-    output: {
-      file: pkg.browser,
-      format: 'iife',
-      name: 'InteradsUI',
-      globals,
-    },
-    external: Object.keys(globals),
-    plugins: [
-      nodeResolve(nodeOptions),
-      babel(babelOptions),
-      commonjs(commonjsOptions),
-      nodeGlobals(),
-    ]
-  }
+  // {
+  //   input,
+  //   output: {
+  //     file: pkg.main,
+  //     format: 'cjs',
+  //     name: 'InteradsUI',
+  //     globals,
+  //   },
+  //   external: Object.keys(globals),
+  //   plugins: [
+  //     nodeResolve(nodeOptions),
+  //     commonjs(commonjsOptions),
+  //     babel(babelOptions),
+  //     nodeGlobals(),
+  //   ]
+  // },
+  // {
+  //   input,
+  //   output: {
+  //     file: pkg.module,
+  //     format: 'es',
+  //     name: 'InteradsUI',
+  //     globals,
+  //   },
+  //   external: Object.keys(globals),
+  //   plugins: [
+  //     nodeResolve(nodeOptions),
+  //     commonjs(commonjsOptions),
+  //     babel(babelOptions),
+  //     nodeGlobals(),
+  //   ]
+  // },
+  // {
+  //   input,
+  //   output: {
+  //     file: pkg.browser,
+  //     format: 'iife',
+  //     name: 'InteradsUI',
+  //     globals,
+  //   },
+  //   external: Object.keys(globals),
+  //   plugins: [
+  //     nodeResolve(nodeOptions),
+  //     babel(babelOptions),
+  //     commonjs(commonjsOptions),
+  //     nodeGlobals(),
+  //   ]
+  // }
 ]

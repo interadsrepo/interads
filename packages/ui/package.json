@@ -5,7 +5,7 @@
   "author": "pratamaizzat <pratama.izzat231298@gmail.com>",
   "homepage": "",
   "license": "MIT",
-  "main": "lib/index.cjs.js",
+  "main": "lib/index.js",
   "module": "lib/index.esm.js",
   "browser": "lib/index.iife.js",
   "types": "lib/types/index.d.ts",
