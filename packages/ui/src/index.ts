@@ -1,2 +1,5 @@
-export * from './material/Alert'
+// Component
 export * from './material/Button'
+
+// Types
+export * from './material/Button/props'

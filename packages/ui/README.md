@@ -1,11 +1,18 @@
-# `ui`
+# `@interads/ui`
 
 > TODO: description
 
 ## Usage
 
 ```
-const ui = require('ui');
+import { Button } from '@interads/ui'
 
-// TODO: DEMONSTRATE API
+export const Home: React.FC = function Home(props: HomeProps) {
+  return (
+    <section>
+      <Button>This is Button</Button>
+    </section>
+  )
+}
+
 ```

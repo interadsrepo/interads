@@ -1,12 +1,12 @@
-import { FC } from 'react'
+import * as React from 'react'
 
 import type { ButtonProps } from './props'
-import { IAButton } from './styled'
+import { IAButton } from './css'
 
-export const Button: FC<ButtonProps> = function Button(props: ButtonProps) {
+export const Button: React.FC<ButtonProps> = function Button(props: ButtonProps) {
   return (
     <IAButton>
-      This is Button
+      This is Change
       {props.children}
     </IAButton>
   )
