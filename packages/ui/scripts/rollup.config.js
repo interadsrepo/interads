@@ -3,7 +3,6 @@ import nodeResolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import babel from '@rollup/plugin-babel'
 import nodeGlobals from 'rollup-plugin-node-globals'
-// import terser from '@rollup/plugin-terser'
 import pkg from '../package.json'
 
 const input = './src/index.ts'
@@ -13,7 +12,6 @@ const globals = {
 }
 const babelOptions = {
   exclude: /node_modules/,
-  // runtimeHelpers: true,
   babelHelpers: 'runtime',
   extensions: ['.js', '.ts', '.tsx'],
   configFile: path.resolve(__dirname, '../../../babel.config.js')
