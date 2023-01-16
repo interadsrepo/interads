@@ -13,6 +13,7 @@ importers:
       '@babel/preset-typescript': ^7.18.6
       '@commitlint/cli': 17.4.2
       '@commitlint/config-conventional': 17.4.2
+      '@commitlint/config-lerna-scopes': 17.4.2
       '@rollup/plugin-babel': ^6.0.3
       '@rollup/plugin-commonjs': ^24.0.0
       '@rollup/plugin-node-resolve': ^15.0.1
@@ -67,6 +68,7 @@ importers:
       '@babel/preset-typescript': 7.18.6_@babel+core@7.20.12
       '@commitlint/cli': 17.4.2
       '@commitlint/config-conventional': 17.4.2
+      '@commitlint/config-lerna-scopes': 17.4.2_lerna@6.4.1
       '@rollup/plugin-babel': 6.0.3_3dsfpkpoyvuuxyfgdbpn4j4uzm
       '@rollup/plugin-commonjs': 24.0.0_rollup@2.79.1
       '@rollup/plugin-node-resolve': 15.0.1_rollup@2.79.1
@@ -1515,6 +1517,22 @@ packages:
     engines: {node: '>=v14'}
     dependencies:
       conventional-changelog-conventionalcommits: 5.0.0
+    dev: true
+
+  /@commitlint/config-lerna-scopes/17.4.2_lerna@6.4.1:
+    resolution: {integrity: sha512-uqunHW7LWBkjEflRAxmzlNu4l3n6Yh/W4EN7eUs404dNj8jhX/K05/ZcFq9i7KzadVp70MUIpZEXfWBTqR9Jyg==}
+    engines: {node: '>=v14'}
+    peerDependencies:
+      lerna: ^5.0.0 || ^6
+    peerDependenciesMeta:
+      lerna:
+        optional: true
+    dependencies:
+      glob: 8.0.3
+      import-from: 4.0.0
+      lerna: 6.4.1
+      resolve-pkg: 2.0.0
+      semver: 7.3.8
     dev: true
 
   /@commitlint/config-validator/17.4.0:
@@ -6420,6 +6438,11 @@ packages:
       parent-module: 1.0.1
       resolve-from: 4.0.0
 
+  /import-from/4.0.0:
+    resolution: {integrity: sha512-P9J71vT5nLlDeV8FHs5nNxaLbrpfAV5cF5srvbZfpwpcJoM/xZR3hiv+q+SAnuSmuGbXMWud063iIMx/V/EWZQ==}
+    engines: {node: '>=12.2'}
+    dev: true
+
   /import-local/3.1.0:
     resolution: {integrity: sha512-ASB07uLtnDs1o6EHjKpX34BKYDSqnFerfTOJL2HvMqF70LnxpjkzDB8J44oT9pu4AMPkQwf8jl6szgvNd2tRIg==}
     engines: {node: '>=8'}
@@ -8834,6 +8857,13 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       global-dirs: 0.1.1
+    dev: true
+
+  /resolve-pkg/2.0.0:
+    resolution: {integrity: sha512-+1lzwXehGCXSeryaISr6WujZzowloigEofRB+dj75y9RRa/obVcYgbHJd53tdYw8pvZj8GojXaaENws8Ktw/hQ==}
+    engines: {node: '>=8'}
+    dependencies:
+      resolve-from: 5.0.0
     dev: true
 
   /resolve/1.22.1:
