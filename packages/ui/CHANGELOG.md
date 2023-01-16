@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.10](https://github.com/interadsrepo/interads/compare/v0.0.8...v0.0.10) (2023-01-16)
+
+### Bug Fixes
+
+- **local commit:** local commit ([9a6c61b](https://github.com/interadsrepo/interads/commit/9a6c61b90ed9fc3a951dd23c58f8629128dee950))
+
+## [0.0.9](https://github.com/interadsrepo/interads/compare/v0.0.8...v0.0.9) (2023-01-16)
+
+**Note:** Version bump only for package @interads/ui
+
 ## [0.0.8](https://github.com/interadsrepo/interads/compare/v0.0.7...v0.0.8) (2023-01-16)
 
 **Note:** Version bump only for package @interads/ui

@@ -6,7 +6,7 @@
     "noEmit": false,
     "emitDeclarationOnly": true,
     "rootDir": "./src",
-    "declarationDir": "lib/types"
+    "declarationDir": "lib/src"
   },
   "include": ["src/**/*.ts*"],
   "exclude": ["node_modules"]
