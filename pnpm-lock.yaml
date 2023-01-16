@@ -20,6 +20,7 @@ importers:
       '@types/react-dom': ^18.0.10
       '@types/react-is': ^17.0.3
       '@types/styled-components': ^5.1.26
+      '@types/tinycolor2': 1.4.3
       '@types/webpack': ^5.28.0
       '@typescript-eslint/eslint-plugin': ^5.48.1
       '@typescript-eslint/parser': ^5.48.1
@@ -47,6 +48,7 @@ importers:
       rollup: ^2.79.1
       rollup-plugin-node-globals: ^1.4.0
       styled-components: ^5.3.6
+      tinycolor2: 1.5.2
       ts-node: ^10.9.1
       typescript: ^4.9.4
       webpack: ^5.75.0
@@ -68,6 +70,7 @@ importers:
       '@types/react-dom': 18.0.10
       '@types/react-is': 17.0.3
       '@types/styled-components': 5.1.26
+      '@types/tinycolor2': 1.4.3
       '@types/webpack': 5.28.0
       '@typescript-eslint/eslint-plugin': 5.48.1_3jon24igvnqaqexgwtxk6nkpse
       '@typescript-eslint/parser': 5.48.1_iukboom6ndih5an6iafl45j2fe
@@ -95,6 +98,7 @@ importers:
       rollup: 2.79.1
       rollup-plugin-node-globals: 1.4.0
       styled-components: 5.3.6_7i5myeigehqah43i5u7wbekgba
+      tinycolor2: 1.5.2
       ts-node: 10.9.1_awa2wsr5thmg3i7jqycphctjfq
       typescript: 4.9.4
       webpack: 5.75.0
@@ -3069,6 +3073,10 @@ packages:
       '@types/hoist-non-react-statics': 3.3.1
       '@types/react': 18.0.26
       csstype: 3.1.1
+
+  /@types/tinycolor2/1.4.3:
+    resolution: {integrity: sha512-Kf1w9NE5HEgGxCRyIcRXR/ZYtDv0V8FVPtYHwLxl0O+maGX0erE77pQlD0gpP+/KByMZ87mOA79SjifhSB3PjQ==}
+    dev: true
 
   /@types/webpack/5.28.0:
     resolution: {integrity: sha512-8cP0CzcxUiFuA9xGJkfeVpqmWTk9nx6CWwamRGCj95ph1SmlRRk9KlCZ6avhCbZd4L68LvYT6l1kpdEnQXrF8w==}
@@ -9193,6 +9201,10 @@ packages:
       globalyzer: 0.1.0
       globrex: 0.1.2
     dev: false
+
+  /tinycolor2/1.5.2:
+    resolution: {integrity: sha512-h80m9GPFGbcLzZByXlNSEhp1gf8Dy+VX/2JCGUZsWLo7lV1mnE/XlxGYgRBoMLJh1lIDXP0EMC4RPTjlRaV+Bg==}
+    dev: true
 
   /tmp/0.0.33:
     resolution: {integrity: sha512-jRCJlojKnZ3addtTOjdIqoRuPEKBvNXcGYqzO6zWZX8KfKEpnGY5jfggJQ3EjKuu8D4bJRr0y+cYJFmYbImXGw==}

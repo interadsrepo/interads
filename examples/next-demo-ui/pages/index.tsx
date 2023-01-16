@@ -20,7 +20,7 @@ export default function Home() {
       <main>
         <h1>Demo</h1>
         <UIThemeProvider theme={theme}>
-          <Button type="button">Button Theme</Button>
+          <Button type="button" disabled>Button Theme</Button>
         </UIThemeProvider>
         <Button type="submit">Button</Button>
       </main>
