@@ -1,6 +1,12 @@
 import * as React from 'react'
 import Head from 'next/head'
-import { Button } from '@interads/ui'
+import { Button, UIThemeProvider, createTheme } from '@interads/ui'
+
+const theme = createTheme({
+  palette: {
+    primary: 'blue',
+  },
+})
 
 export default function Home() {
   return (
@@ -13,7 +19,10 @@ export default function Home() {
       </Head>
       <main>
         <h1>Demo</h1>
-        <Button />
+        <UIThemeProvider theme={theme}>
+          <Button type="button">Button Theme</Button>
+        </UIThemeProvider>
+        <Button type="submit">Button</Button>
       </main>
     </React.Fragment>
   )
