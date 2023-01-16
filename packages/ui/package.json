@@ -58,5 +58,6 @@
   "dependencies": {
     "@babel/runtime": "7.20.7",
     "react-is": "^18.2.0"
-  }
+  },
+  "gitHead": "bf9d4932ef44ef2218c6a2e55232f48c188737a8"
 }
