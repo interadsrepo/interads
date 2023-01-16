@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.17](https://github.com/interadsrepo/interads/compare/v0.0.16...v0.0.17) (2023-01-16)
+
+### Bug Fixes
+
+- **ui:** add UMD budle external ([330fbf6](https://github.com/interadsrepo/interads/commit/330fbf6381e676fc9300aacbac4de12dc9e8d7eb))
+
 ## [0.0.16](https://github.com/interadsrepo/interads/compare/v0.0.15...v0.0.16) (2023-01-16)
 
 **Note:** Version bump only for package @interads/ui
