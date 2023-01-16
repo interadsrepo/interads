@@ -5,10 +5,16 @@
   "author": "pratamaizzat <pratama.izzat231298@gmail.com>",
   "homepage": "",
   "license": "MIT",
-  "main": "lib/index.js",
-  "module": "lib/index.esm.js",
-  "browser": "lib/index.iife.js",
+  "main": "lib/cjs/index.js",
+  "module": "lib/esm/index.js",
+  "browser": "lib/cjs/index.js",
   "types": "lib/types/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./esm/index.js",
+      "require": "./cjs/index.js"
+    }
+  },
   "directories": {
     "lib": "lib"
   },

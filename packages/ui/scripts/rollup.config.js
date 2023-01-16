@@ -35,7 +35,7 @@ export default  [
       name: 'InteradsUI',
       globals,
     },
-    external: Object.keys(globals),
+    external: [...Object.keys(globals), 'react/jsx-runtime'],
     plugins: [
       nodeResolve(nodeOptions),
       commonjs(commonjsOptions),
@@ -43,52 +43,36 @@ export default  [
       nodeGlobals(),
     ]
   },
-  // {
-  //   input,
-  //   output: {
-  //     file: pkg.main,
-  //     format: 'cjs',
-  //     name: 'InteradsUI',
-  //     globals,
-  //   },
-  //   external: Object.keys(globals),
-  //   plugins: [
-  //     nodeResolve(nodeOptions),
-  //     commonjs(commonjsOptions),
-  //     babel(babelOptions),
-  //     nodeGlobals(),
-  //   ]
-  // },
-  // {
-  //   input,
-  //   output: {
-  //     file: pkg.module,
-  //     format: 'es',
-  //     name: 'InteradsUI',
-  //     globals,
-  //   },
-  //   external: Object.keys(globals),
-  //   plugins: [
-  //     nodeResolve(nodeOptions),
-  //     commonjs(commonjsOptions),
-  //     babel(babelOptions),
-  //     nodeGlobals(),
-  //   ]
-  // },
-  // {
-  //   input,
-  //   output: {
-  //     file: pkg.browser,
-  //     format: 'iife',
-  //     name: 'InteradsUI',
-  //     globals,
-  //   },
-  //   external: Object.keys(globals),
-  //   plugins: [
-  //     nodeResolve(nodeOptions),
-  //     babel(babelOptions),
-  //     commonjs(commonjsOptions),
-  //     nodeGlobals(),
-  //   ]
-  // }
+  {
+    input,
+    output: {
+      file: pkg.module,
+      format: 'es',
+      name: 'InteradsUI',
+      globals,
+    },
+    external: [...Object.keys(globals), 'react/jsx-runtime'],
+    plugins: [
+      nodeResolve(nodeOptions),
+      commonjs(commonjsOptions),
+      babel(babelOptions),
+      nodeGlobals(),
+    ]
+  },
+  {
+    input,
+    output: {
+      file: "lib/umd/index.js",
+      format: 'umd',
+      name: 'InteradsUI',
+      globals,
+    },
+    external: Object.keys(globals),
+    plugins: [
+      nodeResolve(nodeOptions),
+      babel(babelOptions),
+      commonjs(commonjsOptions),
+      nodeGlobals(),
+    ]
+  }
 ]
