@@ -14,7 +14,8 @@
     "noErrorTruncation": false,
     "allowJs": true,
     "paths": {
-      "@interads/ui": ["packages/ui/src/index.ts"]
+      "@interads/ui": ["packages/ui/src/index.ts"],
+      "@interads/util": ["packages/util/src/index.ts"]
     },
     // Otherwise we get react-native typings which conflict with dom.lib.
     "types": ["node", "react", "react-is/next"]
