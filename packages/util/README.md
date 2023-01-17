@@ -10,7 +10,17 @@ CommonJS
 
 const { uriEncode } = require('@interads/util')
 
-const encodedParams = uriEncode('', req.query)
+const obj = {
+  page: 1,
+  pageSize: 10,
+  filter: {
+    user: {
+      name: 'john'
+    }
+  }
+}
+
+const encodedParams = uriEncode(obj)
 
 
 ```
@@ -21,7 +31,17 @@ CommonJS
 
 import { uriEncode } from '@interads/util'
 
-const encodedParams = uriEncode('', req.query)
+const obj = {
+  page: 1,
+  pageSize: 10,
+  filter: {
+    user: {
+      name: 'john'
+    }
+  }
+}
+
+const encodedParams = uriEncode(obj)
 
 
 ```
