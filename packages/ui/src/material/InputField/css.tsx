@@ -14,6 +14,7 @@ export const IAInputField = styled('div')<IAInputFieldProps>`
     status && !disabled ? theme.palette?.[status] : '#c2c2c2'};
   --text-info-color: ${({ theme, status, disabled }) =>
     status && !disabled ? theme.palette?.[status] : '#c2c2c2'};
+  font: 100% ${({ theme }) => (theme.fontFamily ? theme.fontFamily : 'inherit')};
   .IAInputField {
     &-title {
       color: #757575;

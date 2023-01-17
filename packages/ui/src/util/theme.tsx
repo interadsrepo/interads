@@ -23,18 +23,8 @@ import {
 } from './color'
 import { PaletteTheme, palette } from './palette'
 
-export interface MaterialTheme {
-  button?: {
-    variant?: {
-      [key: string]: {
-        body: string
-        text: string
-      }
-    }
-  }
-}
 export interface Theme {
-  fontFamily: string
+  fontFamily?: string
   color: ColorTheme
   palette: PaletteTheme
   button?: Partial<{

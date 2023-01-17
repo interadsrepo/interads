@@ -7,7 +7,7 @@ type IAButtonProps = Required<Pick<ButtonProps, 'palette' | 'fullWidth' | 'size'
 export const IAButton = styled('button')<IAButtonProps>`
   border: none;
   outline: none;
-  font: inherit;
+  font: 100% ${({ theme }) => (theme.fontFamily ? theme.fontFamily : 'inherit')};
   cursor: pointer;
   transition: background 0.2s ease, filter 0.2s;
   width: ${({ fullWidth }) => (fullWidth ? '100%' : 'max-content')};

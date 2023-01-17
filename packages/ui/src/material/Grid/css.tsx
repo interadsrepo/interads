@@ -10,6 +10,7 @@ export const IAGrid = styled('div')<IAGridProps>`
   --sig-gutter-y: ${(props) => props.spacingY || `0rem`};
   --sig-breakpoints: ${(props) => props.breakpoints || 12};
   --sig-children: ${(props) => React.Children.count(props.children) || 0};
+  font: 100% ${({ theme }) => (theme.fontFamily ? theme.fontFamily : 'inherit')};
   display: flex;
   flex-wrap: wrap;
   width: 100%;
@@ -35,6 +36,7 @@ export const IAGrid = styled('div')<IAGridProps>`
 type IAGridItemProps = Omit<GridItemProps, 'variant'> & Required<Pick<GridItemProps, 'variant'>>
 
 export const IAGridItem = styled('div')<IAGridItemProps>`
+  font: 100% ${({ theme }) => (theme.fontFamily ? theme.fontFamily : 'inherit')};
   flex: 0 0 auto;
   width: ${(props) => {
     if (props.xs) {

@@ -6,9 +6,9 @@ type IAInputProps = Required<Pick<InputProps, 'fullWidth' | 'variant' | 'palette
 export const IAInput = styled('input')<IAInputProps>`
   --default-color: #c2c2c2;
   --active-color: ${({ theme, palette }) => theme.palette?.[palette]};
+  font: 100% ${({ theme }) => (theme.fontFamily ? theme.fontFamily : 'inherit')};
   border: none;
   outline: none;
-  font: inherit;
   cursor: auto;
   transition: background 0.2s ease, filter 0.2s;
   min-width: 2rem;

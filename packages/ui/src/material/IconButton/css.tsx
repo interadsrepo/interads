@@ -7,9 +7,9 @@ type IAIconButtonProps = Required<
 >
 
 export const IAIconButton = styled('button')<IAIconButtonProps>`
+  font: 100% ${({ theme }) => (theme.fontFamily ? theme.fontFamily : 'inherit')};
   border: none;
   outline: none;
-  font: inherit;
   cursor: pointer;
   transition: background 0.2s ease, filter 0.2s;
   width: ${({ fullWidth }) => (fullWidth ? '100%' : 'max-content')};

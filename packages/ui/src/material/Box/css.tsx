@@ -4,7 +4,7 @@ import type { BoxProps } from './props'
 type IABoxProps = Required<Pick<BoxProps, 'fullWidth' | 'variant'>>
 
 export const IABox = styled('div')<IABoxProps>`
-  font: inherit;
+  font: 100% ${({ theme }) => (theme.fontFamily ? theme.fontFamily : 'inherit')};
   width: ${({ fullWidth }) => (fullWidth ? '100%' : 'max-content')};
   ${(props) => props.hidden && `display:none;`}
   ${({ theme }) => {
