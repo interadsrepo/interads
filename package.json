@@ -13,6 +13,7 @@
     "build": "lerna run build",
     "prepublish": "lerna run build",
     "lint": "eslint . --cache --report-unused-disable-directives --ext .js,.ts,.tsx --max-warnings 0",
+    "version": "cross-env HUSKY=0 lerna version --no-private",
     "publish": "cross-env HUSKY=0 lerna publish --no-private",
     "prepare": "husky install"
   },
