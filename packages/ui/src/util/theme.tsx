@@ -1,3 +1,4 @@
+import { CSSObject } from 'styled-components'
 import {
   amber,
   black,
@@ -22,12 +23,88 @@ import {
 } from './color'
 import { PaletteTheme, palette } from './palette'
 
+export interface MaterialTheme {
+  button?: {
+    variant?: {
+      [key: string]: {
+        body: string
+        text: string
+      }
+    }
+  }
+}
 export interface Theme {
+  fontFamily: string
   color: ColorTheme
   palette: PaletteTheme
+  button?: Partial<{
+    root: CSSObject
+    variant: {
+      [key: string]: {
+        root: CSSObject
+      }
+    }
+  }>
+  iconButton?: Partial<{
+    root: CSSObject
+    variant: {
+      [key: string]: {
+        root: CSSObject
+      }
+    }
+  }>
+  grid?: Partial<{
+    root: CSSObject
+    variant: {
+      [key: string]: {
+        root: CSSObject
+      }
+    }
+  }>
+  gridItem?: Partial<{
+    root: CSSObject
+    variant: {
+      [key: string]: {
+        root: CSSObject
+      }
+    }
+  }>
+  box?: Partial<{
+    root: CSSObject
+    variant: {
+      [key: string]: {
+        root: CSSObject
+      }
+    }
+  }>
+  textView?: Partial<{
+    root: CSSObject
+    variant: {
+      [key: string]: {
+        root: CSSObject
+      }
+    }
+  }>
+  input?: Partial<{
+    root: CSSObject
+    variant: {
+      [key: string]: {
+        root: CSSObject
+      }
+    }
+  }>
+  inputField?: Partial<{
+    root: CSSObject
+    variant: {
+      [key: string]: {
+        root: CSSObject
+      }
+    }
+  }>
 }
 
 export const defaultTheme: Theme = {
+  fontFamily: 'sans-serif',
   color: {
     red,
     amber,

@@ -21,10 +21,7 @@ import {
 } from './color'
 import { Theme } from './theme'
 import { PaletteTheme } from './palette'
-
-type RecursivePartial<T> = {
-  [P in keyof T]?: RecursivePartial<T[P]>
-}
+import { RecursivePartial } from '../global'
 
 export const createTheme = (incomingTheme: RecursivePartial<Omit<Theme, 'color'>>) => {
   const palette: PaletteTheme = {
@@ -35,13 +32,14 @@ export const createTheme = (incomingTheme: RecursivePartial<Omit<Theme, 'color'>
     success: '#4CAF50',
     warning: '#FFC107',
   }
+  const { palette: incomingPalette, ...rest } = incomingTheme
   const newPalette = palette
-
   Object.keys(newPalette).forEach((key) => {
-    newPalette[key] = incomingTheme.palette?.[key] || newPalette[key]
+    newPalette[key] = incomingPalette?.[key] || newPalette[key]
   })
 
   return {
+    fontFamily: 'sans-serif',
     color: {
       amber,
       black,
@@ -66,6 +64,7 @@ export const createTheme = (incomingTheme: RecursivePartial<Omit<Theme, 'color'>
     palette: {
       ...newPalette,
     },
+    ...rest,
   }
 }
 

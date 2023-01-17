@@ -1,9 +1,9 @@
 import * as React from 'react'
 
-import type { ButtonProps } from './props'
-import { IAButton } from './css'
+import type { IconButtonProps } from './props'
+import { IAIconButton } from './css'
 
-export const Button: React.FC<ButtonProps> = function Button(props: ButtonProps) {
+export const IconButton: React.FC<IconButtonProps> = function IconButton(props: IconButtonProps) {
   const {
     palette = 'secondary',
     size = 'md',
@@ -14,8 +14,8 @@ export const Button: React.FC<ButtonProps> = function Button(props: ButtonProps)
     ...rest
   } = props
   return (
-    <IAButton
-      className={`IAButton-root ${!className ? '' : className}`.trim()}
+    <IAIconButton
+      className={`IAIconButton-root ${!className ? '' : className}`.trim()}
       palette={palette}
       size={size}
       fullWidth={fullWidth}
@@ -23,8 +23,8 @@ export const Button: React.FC<ButtonProps> = function Button(props: ButtonProps)
       {...rest}
     >
       {children}
-    </IAButton>
+    </IAIconButton>
   )
 }
 
-export default Button
+export default IconButton

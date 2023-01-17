@@ -1,10 +1,12 @@
 import styled, { css } from 'styled-components'
 import tinycolor from 'tinycolor2'
-import type { ButtonProps } from './props'
+import type { IconButtonProps } from './props'
 
-type IAButtonProps = Required<Pick<ButtonProps, 'palette' | 'fullWidth' | 'size' | 'variant'>>
+type IAIconButtonProps = Required<
+  Pick<IconButtonProps, 'palette' | 'fullWidth' | 'size' | 'variant'>
+>
 
-export const IAButton = styled('button')<IAButtonProps>`
+export const IAIconButton = styled('button')<IAIconButtonProps>`
   border: none;
   outline: none;
   font: inherit;
@@ -15,39 +17,20 @@ export const IAButton = styled('button')<IAButtonProps>`
   align-items: center;
   gap: 0.5rem;
   border-radius: 0.5rem;
-  font-weight: 500;
-  line-height: ${({ size }) => {
-    if (size === 'xl') {
-      return '1.75rem'
-    }
-    if (size === 'lg' || size === 'md') {
-      return '1.5rem'
-    }
-    return '1.25rem'
-  }};
-  font-size: ${({ size }) => {
-    if (size === 'xl') {
-      return '1.125rem'
-    }
-    if (size === 'lg' || size === 'md') {
-      return '1rem'
-    }
-    return '0.875rem'
-  }};
   padding: ${({ size }) => {
     if (size === 'xl') {
-      return '1rem 1.75rem'
+      return '1rem 1rem'
     }
     if (size === 'lg') {
-      return '0.75rem 1.25rem'
+      return '0.875rem'
     }
     if (size === 'md') {
-      return '0.625rem 1.125rem'
+      return '0.75rem'
     }
     if (size === 'sm') {
-      return '0.625rem 1rem'
+      return '0.625rem'
     }
-    return '0.5rem 0.875rem'
+    return '0.5rem'
   }};
   ${({ theme, palette, variant }) => {
     if (theme) {
@@ -93,13 +76,13 @@ export const IAButton = styled('button')<IAButtonProps>`
   }
   ${(props) => props.hidden && `display:none;`}
   ${({ theme }) => {
-    const customStyle = theme?.button?.root
+    const customStyle = theme?.iconButton?.root
     return customStyle ? css(customStyle) : null
   }}
   ${({ theme, variant }) => {
-    const customStyle = theme?.button?.variant?.[variant.toString()]?.root
+    const customStyle = theme?.iconButton?.variant?.[variant.toString()]?.root
     return customStyle ? css(customStyle) : null
   }}
 `
 
-export default IAButton
+export default IAIconButton

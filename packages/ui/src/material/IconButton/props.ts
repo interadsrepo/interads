@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { MaterialSize, PaletteType } from '../../constant'
 
-export interface ButtonProps extends React.ComponentPropsWithRef<'button'> {
+export interface IconButtonProps extends React.ComponentPropsWithRef<'button'> {
   palette?: PaletteType
   fullWidth?: boolean
   size?: MaterialSize
