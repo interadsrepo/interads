@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/interadsrepo/interads/compare/v0.1.1...v0.2.0) (2023-01-17)
+
+### Bug Fixes
+
+- fix conflict ([207b012](https://github.com/interadsrepo/interads/commit/207b0122ea53805e0818070cbec1337a13c82ab5))
+- **ui:** remove global style and add custom font on each components ([77984e7](https://github.com/interadsrepo/interads/commit/77984e73ea3e8434871d4bcce3d1209fe8023389))
+
+### Features
+
+- new Component feature update ([b75d954](https://github.com/interadsrepo/interads/commit/b75d954ff1fb07c87f83ccfc42d63d92e7aa95c7))
+
 ## [0.1.1](https://github.com/interadsrepo/interads/compare/v0.1.0...v0.1.1) (2023-01-17)
 
 **Note:** Version bump only for package @interads/interads
