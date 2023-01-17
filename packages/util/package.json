@@ -54,6 +54,5 @@
   },
   "dependencies": {
     "@babel/runtime": "7.20.7"
-  },
-  "gitHead": "3911f474722c41a53fb91ca8fb7b64d2bb177fa5"
+  }
 }
