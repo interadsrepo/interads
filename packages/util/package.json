@@ -1,0 +1,59 @@
+{
+  "name": "@interads/util",
+  "version": "0.1.1",
+  "description": "interads util",
+  "author": "pratamaizzat <pratama.izzat231298@gmail.com>",
+  "homepage": "",
+  "license": "MIT",
+  "main": "lib/index.cjs.js",
+  "module": "lib/index.esm.js",
+  "types": "lib/src/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./lib/index.esm.js",
+      "require": "./lib/index.cjs.js"
+    }
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "type-check": "tsc --noEmit",
+    "prebuild": "rimraf lib tsconfig.build.tsbuildinfo && pnpm run type-check",
+    "build": "pnpm run build:types && pnpm run build:js",
+    "build:types": "tsc --project tsconfig.build.json",
+    "build:js": "cross-env BABEL_ENV=stable rollup -c scripts/rollup.config.js",
+    "test": "jest --maxWorkers=1"
+  },
+  "peerDependenciesMeta": {},
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "rootDir": "src",
+    "moduleNameMapper": {
+      "^src/(.*)$": "<rootDir>/$1"
+    },
+    "testRegex": ".*\\.spec\\.ts$",
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "collectCoverageFrom": [
+      "**/*.(t|j)s"
+    ],
+    "coverageDirectory": "./coverage",
+    "testEnvironment": "node"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@babel/runtime": "7.20.7"
+  },
+  "gitHead": "b0c7245c8cd927d0834334952161bb25f732134c"
+}
