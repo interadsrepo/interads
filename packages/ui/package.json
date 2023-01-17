@@ -24,7 +24,7 @@
   "scripts": {
     "type-check": "tsc --noEmit",
     "type-check:watch": "pnpm run type-check --watch",
-    "prebuild": "rimraf lib tsconfig.build.tsbuildinfo",
+    "prebuild": "rimraf lib tsconfig.build.tsbuildinfo && pnpm run type-check",
     "build": "pnpm run build:types && pnpm run build:js",
     "build:types": "tsc --project tsconfig.build.json",
     "build:js": "cross-env BABEL_ENV=stable rollup -c scripts/rollup.config.js"
