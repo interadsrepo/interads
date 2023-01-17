@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://github.com/interadsrepo/interads/compare/v0.2.0...v0.2.1) (2023-01-17)
+
+### Bug Fixes
+
+- **ui:** bump version ([5e8c8e6](https://github.com/interadsrepo/interads/commit/5e8c8e67f2fcf0abfbd1f6be707cb021d42b21b9))
+
 # [0.2.0](https://github.com/interadsrepo/interads/compare/v0.1.1...v0.2.0) (2023-01-17)
 
 ### Bug Fixes
