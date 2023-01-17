@@ -2,9 +2,9 @@
 const nextConfig = {
   reactStrictMode: true,
   compiler: {
-    styledComponents: true
+    styledComponents: true,
   },
-  transpilePackages: ['@interads/ui']
+  transpilePackages: ['@interads/ui'],
 }
 
 module.exports = nextConfig

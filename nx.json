@@ -3,30 +3,20 @@
     "default": {
       "runner": "nx/tasks-runners/default",
       "options": {
-        "cacheableOperations": [
-          "build"
-        ]
+        "cacheableOperations": ["build"]
       }
     }
   },
   "targetDefaults": {
     "build": {
-      "dependsOn": [
-        "^build"
-      ],
-      "outputs": [
-        "{projectRoot}/lib"
-      ]
+      "dependsOn": ["^build"],
+      "outputs": ["{projectRoot}/lib"]
     },
     "lint": {
-      "dependsOn": [
-        "^lint"
-      ]
+      "dependsOn": ["^lint"]
     },
     "type-check": {
-      "dependsOn": [
-        "^type-check"
-      ]
+      "dependsOn": ["^type-check"]
     }
   }
 }

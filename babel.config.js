@@ -8,7 +8,7 @@
 // module.exports = resolveAliasPath
 
 module.exports = function getBabelConfig(api) {
-  const useESModules = api.env(['legacy', 'modern', 'stable', 'rollup']);
+  const useESModules = api.env(['legacy', 'modern', 'stable', 'rollup'])
 
   const presets = [
     [
@@ -19,7 +19,7 @@ module.exports = function getBabelConfig(api) {
         debug: process.env.IA_BUILD_VERBOSE === 'true',
         modules: useESModules ? false : 'commonjs',
         shippedProposals: api.env('modern'),
-      }
+      },
     ],
     [
       '@babel/preset-react',
@@ -31,10 +31,7 @@ module.exports = function getBabelConfig(api) {
   ]
 
   const plugins = [
-    [
-      'babel-plugin-styled-components',
-      {}
-    ],
+    ['babel-plugin-styled-components', {}],
     [
       '@babel/plugin-transform-runtime',
       {
@@ -43,7 +40,7 @@ module.exports = function getBabelConfig(api) {
         version: '^7.4.4',
       },
     ],
-  ];
+  ]
 
   return {
     assumptions: {

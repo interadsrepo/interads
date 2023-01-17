@@ -8,17 +8,17 @@ Component List:
 
 - [ ] Theming
 - [x] Box
-    - [x] Theming
-- [X] Grid
-    - [x] Theming
+  - [x] Theming
+- [x] Grid
+  - [x] Theming
 - [x] Button
-    - [x] Theming
+  - [x] Theming
 - [x] TextView
-    - [x] Theming
-- [X] Input
-    - [x] Theming
-- [X] InputField
-    - [x] Theming
+  - [x] Theming
+- [x] Input
+  - [x] Theming
+- [x] InputField
+  - [x] Theming
 
 ## @interads/utils
 

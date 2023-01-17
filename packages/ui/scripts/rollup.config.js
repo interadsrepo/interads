@@ -8,23 +8,23 @@ import pkg from '../package.json'
 const input = './src/index.ts'
 const globals = {
   react: 'React',
-  'react-dom': 'ReactDom'
+  'react-dom': 'ReactDom',
 }
 const babelOptions = {
   exclude: /node_modules/,
   babelHelpers: 'runtime',
   extensions: ['.js', '.ts', '.tsx'],
-  configFile: path.resolve(__dirname, '../../../babel.config.js')
+  configFile: path.resolve(__dirname, '../../../babel.config.js'),
 }
 const commonjsOptions = {
   ignoreGlobal: true,
-  include: /node_modules/
+  include: /node_modules/,
 }
 const nodeOptions = {
   extensions: ['.js', '.tsx', '.ts'],
-};
+}
 
-export default  [
+export default [
   {
     input,
     output: {
@@ -39,7 +39,7 @@ export default  [
       commonjs(commonjsOptions),
       babel(babelOptions),
       nodeGlobals(),
-    ]
+    ],
   },
   {
     input,
@@ -55,12 +55,12 @@ export default  [
       commonjs(commonjsOptions),
       babel(babelOptions),
       nodeGlobals(),
-    ]
+    ],
   },
   {
     input,
     output: {
-      file: "lib/umd/index.js",
+      file: 'lib/umd/index.js',
       format: 'umd',
       name: 'InteradsUI',
       globals,
@@ -71,6 +71,6 @@ export default  [
       babel(babelOptions),
       commonjs(commonjsOptions),
       nodeGlobals(),
-    ]
-  }
+    ],
+  },
 ]
