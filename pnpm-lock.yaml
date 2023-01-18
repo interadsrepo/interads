@@ -159,9 +159,11 @@ importers:
   packages/ui:
     specifiers:
       '@babel/runtime': 7.20.7
+      '@interads/util': ^0.8.0
       react-is: ^18.2.0
     dependencies:
       '@babel/runtime': 7.20.7
+      '@interads/util': link:../util
       react-is: 18.2.0
 
   packages/util:
