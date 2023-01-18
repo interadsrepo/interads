@@ -32,7 +32,7 @@ export default styled('dialog')<ComponentProps>`
   backdrop-filter: blur(0.25rem);
   background-color: rgba(0, 0, 0, 0.5);
   visibility: ${(props) => (!props.open ? 'hidden' : 'visible')};
-  & .modal-container {
+  & .IAModal-container {
     overflow-y: auto;
     ${(props) => {
       if (!props.fullWidth) {
@@ -62,7 +62,7 @@ export default styled('dialog')<ComponentProps>`
     outline: 0;
     opacity: ${(props) => (!props.open ? '0' : '1')};
     transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-    & .modal-content {
+    & .IAModal-content {
       margin: ${(props) => (props.fullWidth ? '0' : '2rem')};
       ${(props) => {
         if (props.scroll === 'content' || props.fullWidth) {
@@ -116,7 +116,7 @@ export default styled('dialog')<ComponentProps>`
         `outline: solid ${theme.palette?.[palette]} ${
           typeof outline === 'string' ? outline : `0.0625rem`
         }`};
-      .modal-head {
+      .IAModal-head {
         border-top-left-radius: inherit;
         border-top-right-radius: inherit;
         border-bottom: 0.063rem solid #e0e0e0;
@@ -140,7 +140,7 @@ export default styled('dialog')<ComponentProps>`
           return customStyle ? css(customStyle) : null
         }}
       }
-      .modal-foot {
+      .IAModal-foot {
         border-bottom-left-radius: inherit;
         border-bottom-right-radius: inherit;
         border-top: 0.063rem solid #e0e0e0;
@@ -162,7 +162,7 @@ export default styled('dialog')<ComponentProps>`
           return customStyle ? css(customStyle) : null
         }}
       }
-      .modal-body {
+      .IAModal-body {
         color: ${({ theme, color }) => (color ? theme.color[color] : 'inherit')};
         padding: 1rem;
         text-align: left;

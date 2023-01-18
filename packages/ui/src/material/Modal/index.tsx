@@ -15,13 +15,14 @@ export const Modal: React.FC<ModalProps> = function Modal(props: ModalProps) {
     scroll = 'body',
     outline = 'outline',
     round = false,
+    className,
     onClose,
     children,
     ...rest
   } = props
   const unique = useUniqueId()
   React.useEffect(() => {
-    const modalList = document.querySelector('.modal-root.show')
+    const modalList = document.querySelector('.IAModal-root.show')
     if (open) {
       document.body.style.overflow = 'hidden'
     } else if (!modalList) {
@@ -35,14 +36,14 @@ export const Modal: React.FC<ModalProps> = function Modal(props: ModalProps) {
   }, [open])
   const onClick = (event: React.MouseEvent) => {
     const dataRole = (event.target as HTMLElement).getAttribute('data-role')
-    if (dataRole === `modal-backdrop-${unique}`) {
+    if (dataRole === `IAModal-backdrop-${unique}`) {
       onClose()
     }
   }
   return (
     <IUModal
       role="presentation"
-      data-role={`modal-backdrop-${unique}`}
+      data-role={`IAModal-backdrop-${unique}`}
       open={open}
       onClick={onClick}
       size={size}
@@ -53,11 +54,18 @@ export const Modal: React.FC<ModalProps> = function Modal(props: ModalProps) {
       scroll={scroll}
       round={round}
       outline={outline}
+      className={`IAModal-root IAModal-backdrop-${unique} ${open ? 'show' : ''} ${
+        className || ''
+      }`.trim()}
       {...rest}
     >
       <div style={{ display: 'block' }} data-test="sentinelStart" />
-      <div className="modal-container" data-role={`modal-backdrop-${unique}`} role="presentation">
-        <div className="modal-content" role="dialog">
+      <div
+        className="IAModal-container"
+        data-role={`IAModal-backdrop-${unique}`}
+        role="presentation"
+      >
+        <div className="IAModal-content" role="dialog">
           {children}
         </div>
       </div>
@@ -69,7 +77,7 @@ export const Modal: React.FC<ModalProps> = function Modal(props: ModalProps) {
 export const ModalHead: React.FC<ModalHeadProps> = function ModalHead(props: ModalHeadProps) {
   const { children, className, ...rest } = props
   return (
-    <IUModalHead className={`modal-head ${className}`} {...rest}>
+    <IUModalHead className={`IAModal-head ${className}`} {...rest}>
       {children}
     </IUModalHead>
   )
@@ -78,7 +86,7 @@ export const ModalHead: React.FC<ModalHeadProps> = function ModalHead(props: Mod
 export const ModalBody: React.FC<ModalBodyProps> = function ModalBody(props: ModalBodyProps) {
   const { children, className, ...rest } = props
   return (
-    <IUModalBody className={`modal-body ${className}`} {...rest}>
+    <IUModalBody className={`IAModal-body ${className}`} {...rest}>
       {children}
     </IUModalBody>
   )
@@ -87,7 +95,7 @@ export const ModalBody: React.FC<ModalBodyProps> = function ModalBody(props: Mod
 export const ModalFoot: React.FC<ModalFootProps> = function ModalFoot(props: ModalFootProps) {
   const { children, className, ...rest } = props
   return (
-    <IUModalFoot className={`modal-foot ${className}`} {...rest}>
+    <IUModalFoot className={`IAModal-foot ${className}`} {...rest}>
       {children}
     </IUModalFoot>
   )
