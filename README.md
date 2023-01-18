@@ -13,11 +13,19 @@ Component List:
   - [x] Theming
 - [x] Button
   - [x] Theming
+- [x] Tooltip
+  - [x] Theming
 - [x] TextView
   - [x] Theming
 - [x] Input
   - [x] Theming
 - [x] InputField
+  - [x] Theming
+- [x] Tooltip
+  - [x] Theming
+- [x] Alert
+  - [x] Theming
+- [x] Modal
   - [x] Theming
 
 ## @interads/utils

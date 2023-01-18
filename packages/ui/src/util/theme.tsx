@@ -67,6 +67,14 @@ export interface Theme {
       }
     }
   }>
+  tooltip?: Partial<{
+    root: CSSObject
+    variant: {
+      [key: string]: {
+        root: CSSObject
+      }
+    }
+  }>
   textView?: Partial<{
     root: CSSObject
     variant: {
@@ -88,6 +96,42 @@ export interface Theme {
     variant: {
       [key: string]: {
         root: CSSObject
+      }
+    }
+  }>
+  alert?: Partial<{
+    root: CSSObject
+    variant: {
+      [key: string]: {
+        root?: CSSObject
+        body: string
+        main: string
+      }
+      success: {
+        body: string
+        main: string
+      }
+      error: {
+        body: string
+        main: string
+      }
+      warning: {
+        body: string
+        main: string
+      }
+    }
+  }>
+  modal?: Partial<{
+    root: CSSObject
+    foot: CSSObject
+    body: CSSObject
+    head: CSSObject
+    variant: {
+      [key: string]: {
+        root?: CSSObject
+        foot: CSSObject
+        body: CSSObject
+        head: CSSObject
       }
     }
   }>
@@ -117,4 +161,20 @@ export const defaultTheme: Theme = {
     deepPurple,
   },
   palette,
+  alert: {
+    variant: {
+      success: {
+        body: '#EEFCF0',
+        main: '#51DC6B',
+      },
+      error: {
+        body: '#FEEBEB',
+        main: '#FB5758',
+      },
+      warning: {
+        body: '#FFF9EB',
+        main: '#FEC124',
+      },
+    },
+  },
 }
