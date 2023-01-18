@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { hexToHsl } from '../../util/helper'
+import tinycolor from 'tinycolor2'
 import { AlertProps } from './props'
 
 type IABoxProps = Required<Pick<AlertProps, 'variant' | 'message'>>
@@ -177,7 +177,9 @@ const StyledAlert = styled('dialog')<IABoxProps>`
       & .btn-view:hover {
         background-color: ${(props) => {
           const { variant, theme } = props
-          return hexToHsl(theme.alert?.variant?.[variant].main || '#00000', 10)
+          return tinycolor(theme.alert?.variant?.[variant].main || '#00000')
+            .brighten(10)
+            .toHexString()
         }};
       }
 
@@ -190,7 +192,7 @@ const StyledAlert = styled('dialog')<IABoxProps>`
       }
 
       & .btn-cancel:hover {
-        background-color: ${hexToHsl('#ffffff', 10)};
+        background-color: ${tinycolor('#ffffff').brighten(10).toHexString()};
       }
 
       & .btn-next {
@@ -204,7 +206,9 @@ const StyledAlert = styled('dialog')<IABoxProps>`
       & .btn-next:hover {
         background-color: ${(props) => {
           const { variant, theme } = props
-          return hexToHsl(theme.alert?.variant?.[variant].main || '#00000', 10)
+          return tinycolor(theme.alert?.variant?.[variant].main || '#00000')
+            .brighten(10)
+            .toHexString()
         }};
       }
     }

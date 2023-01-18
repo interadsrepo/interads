@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/interadsrepo/interads/compare/v0.8.0...v0.9.0) (2023-01-18)
+
+### Features
+
+- **util:** decorator validator ([2090f29](https://github.com/interadsrepo/interads/commit/2090f296d2d8f66aa764a84a6771dd9a1c483619))
+- **util:** new utils deepclone ([df95933](https://github.com/interadsrepo/interads/commit/df9593322fbd41ba84268a90dce17307e18e3f14))
+
 # [0.8.0](https://github.com/interadsrepo/interads/compare/v0.7.0...v0.8.0) (2023-01-18)
 
 ### Bug Fixes

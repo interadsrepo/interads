@@ -21,6 +21,12 @@ Component List:
   - [x] Theming
 - [x] InputField
   - [x] Theming
+- [x] Tooltip
+  - [x] Theming
+- [x] Alert
+  - [x] Theming
+- [x] Modal
+  - [x] Theming
 
 ## @interads/utils
 

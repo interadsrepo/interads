@@ -2,7 +2,7 @@ import * as React from 'react'
 import { cssProps } from '../constant'
 import { GenericObject, ObjectType } from '../global'
 
-export const getPropStyle = (props: GenericObject<string>) => {
+export const getPropStyle = (props: GenericObject<any>) => {
   const style: { [key: string]: string | number | null } = {}
   Object.keys(props).forEach((val: string) => {
     if (cssProps.includes(val)) {

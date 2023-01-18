@@ -4,7 +4,7 @@ import { ModalFootProps, ModalHeadProps, ModalProps, ModalBodyProps } from './pr
 import IUModal, { IUModalBody, IUModalFoot, IUModalHead } from './css'
 import { useUniqueId } from '../../util/helper'
 
-const Modal: React.FC<ModalProps> = function Modal(props: ModalProps) {
+export const Modal: React.FC<ModalProps> = function Modal(props: ModalProps) {
   const {
     open = false,
     palette = 'primary',
@@ -22,7 +22,6 @@ const Modal: React.FC<ModalProps> = function Modal(props: ModalProps) {
   const unique = useUniqueId()
   React.useEffect(() => {
     const modalList = document.querySelector('.modal-root.show')
-
     if (open) {
       document.body.style.overflow = 'hidden'
     } else if (!modalList) {

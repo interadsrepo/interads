@@ -11,10 +11,13 @@ import {
   TextView,
   Tooltip,
   useAlert,
+  Modal,
+  ModalBody,
+  ModalFoot,
+  ModalHead,
 } from '@interads/ui'
 
 import { MagnifyingGlass, Question, UserCircle } from 'phosphor-react'
-import Modal, { ModalBody, ModalFoot, ModalHead } from 'packages/ui/src/material/Modal'
 
 export default function Home() {
   const alert = useAlert()
@@ -29,6 +32,7 @@ export default function Home() {
       .catch(() => {})
   }
   const [modal, setModal] = React.useState<string | null>(null)
+  const [modalInside, setModalInside] = React.useState<boolean>(false)
   return (
     <React.Fragment>
       <Head>
@@ -341,6 +345,30 @@ export default function Home() {
               interested. Sections 1.10.32 and 1.10.33 from &quot;de Finibus Bonorum et
               Malorum&quot; by Cicero are also reproduced in their exact original form, accompanied
               by English versions from the 1914 translation by H. Rackham.
+            </TextView>
+            <Button variant="outline" onClick={() => setModalInside(true)} fullWidth>
+              Scroll Content
+            </Button>
+          </ModalBody>
+          <ModalFoot>Modal Scroll Foot</ModalFoot>
+        </Modal>
+        <Modal
+          scroll="content"
+          size="xs"
+          open={modalInside}
+          round
+          onClose={() => setModalInside(false)}
+        >
+          <ModalHead>Modal Scroll Head</ModalHead>
+          <ModalBody>
+            <TextView>
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+              has been the industry&apps;s standard dummy text ever since the 1500s, when an unknown
+              printer took a galley of type and scrambled it to make a type specimen book. It has
+              survived not only five centuries, but also the leap into electronic typesetting,
+              remaining essentially unchanged. It was popularised in the 1960s with the release of
+              Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
+              publishing software like Aldus PageMaker including versions of Lorem Ipsum.
             </TextView>
           </ModalBody>
           <ModalFoot>Modal Scroll Foot</ModalFoot>
