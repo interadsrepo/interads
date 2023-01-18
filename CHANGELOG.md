@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.1](https://github.com/interadsrepo/interads/compare/v0.9.0...v0.9.1) (2023-01-18)
+
+### Bug Fixes
+
+- **util:** export function deepClone ([f8fd142](https://github.com/interadsrepo/interads/commit/f8fd1427bee63977523c0831ebc65e5b459b7198))
+
 # [0.9.0](https://github.com/interadsrepo/interads/compare/v0.8.0...v0.9.0) (2023-01-18)
 
 ### Features
