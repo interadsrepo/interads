@@ -5,16 +5,10 @@
   "author": "pratamaizzat <pratama.izzat231298@gmail.com>",
   "homepage": "",
   "license": "MIT",
-  "main": "lib/cjs/index.js",
-  "module": "lib/esm/index.js",
-  "browser": "lib/cjs/index.js",
-  "types": "lib/types/index.d.ts",
-  "exports": {
-    ".": {
-      "import": "./lib/esm/index.js",
-      "require": "./lib/cjs/index.js"
-    }
-  },
+  "main": "./lib/index.js",
+  "module": "./lib/esm/index.js",
+  "browser": "./lib/index.js",
+  "types": "./lib/index.d.ts",
   "directories": {
     "lib": "lib"
   },
@@ -25,9 +19,11 @@
     "type-check": "tsc --noEmit",
     "type-check:watch": "pnpm run type-check --watch",
     "prebuild": "rimraf lib tsconfig.build.tsbuildinfo && pnpm run type-check",
-    "build": "pnpm run build:types && pnpm run build:js",
-    "build:types": "tsc --project tsconfig.build.json",
-    "build:js": "cross-env BABEL_ENV=stable rollup -c scripts/rollup.config.js"
+    "build": "pnpm run build:node && pnpm run build:stable && pnpm pnpm run build:umd && pnpm run build:types",
+    "build:types": "node ../../scripts/buildTypes.mjs",
+    "build:node": "node ../../scripts/build.mjs node",
+    "build:stable": "node ../../scripts/build.mjs stable",
+    "build:umd": "cross-env BABEL_ENV=stable rollup -c scripts/rollup.config.js"
   },
   "peerDependencies": {
     "@types/react": "^18.0.26",
