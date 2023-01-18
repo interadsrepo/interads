@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/interadsrepo/interads/compare/v0.7.0...v0.8.0) (2023-01-18)
+
+### Bug Fixes
+
+- **util:** export function mergedeep to package ([baa72e1](https://github.com/interadsrepo/interads/commit/baa72e17080af5ead6aabbb961dea183cdb152fa))
+
+### Features
+
+- **util:** mergedeep object. merge some object to return one merged object ([50f4d8f](https://github.com/interadsrepo/interads/commit/50f4d8f3bc8c3c10f14df157a56fb67c7bd3aaac))
+
 # 0.7.0 (2023-01-17)
 
 ### Bug Fixes
