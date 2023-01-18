@@ -10,7 +10,7 @@
   "targetDefaults": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["{projectRoot}/lib", "{projectRoot}/.next"]
+      "outputs": ["{projectRoot}/lib"]
     },
     "lint": {
       "dependsOn": ["^lint"]
