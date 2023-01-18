@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0](https://github.com/interadsrepo/interads/compare/v0.9.1...v0.10.0) (2023-01-18)
+
+### Bug Fixes
+
+- **ui:** fix modal statue ([aaae1dd](https://github.com/interadsrepo/interads/commit/aaae1dda45b36e3f9f1782d77cee2df464f48a67))
+
+### Features
+
+- **ui:** add new component which are Tooltip, Alert and Modal ([21c52c1](https://github.com/interadsrepo/interads/commit/21c52c1e97e95cebad52134c765d8525500f6d8d))
+- **ui:** change deepClone function in createTheme ([73303b6](https://github.com/interadsrepo/interads/commit/73303b6a3f484d91f14782c635a44687aef6a274))
+
 ## [0.9.1](https://github.com/interadsrepo/interads/compare/v0.9.0...v0.9.1) (2023-01-18)
 
 **Note:** Version bump only for package @interads/ui
