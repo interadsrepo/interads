@@ -1,8 +1,8 @@
 import { deepClone, mergeDeep } from '@interads/util'
 import { Theme, defaultTheme } from './theme'
-import { RecursivePartial } from '../global'
+import { RecursivePartial as RP } from '../global'
 
-export const createTheme = (incomingTheme: RecursivePartial<Omit<Theme, 'color'>>) => {
+export const createTheme = (incomingTheme: RP<Omit<Theme, 'color'>>): RP<Theme> => {
   const newDefaultTheme = deepClone({ ...defaultTheme })
   const newIncomingTheme = deepClone(incomingTheme)
   const restMerge = mergeDeep(newDefaultTheme, newIncomingTheme)
