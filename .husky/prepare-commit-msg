@@ -5,4 +5,4 @@
 #   exec < /dev/tty && node_modules/.bin/cz --hook "$1" "$2" "$3" || true
 # fi
 
-exec < /dev/tty && npx cz --hook || true
+exec < /dev/tty && ./node_modules/.bin/cz --hook || true
