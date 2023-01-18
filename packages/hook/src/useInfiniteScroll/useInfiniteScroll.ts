@@ -1,4 +1,4 @@
-export function useInfiniteScroll() {
+function useInfiniteScroll() {
   return 'useInfiniteScroll'
 }
 
