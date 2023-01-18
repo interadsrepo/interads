@@ -10,7 +10,7 @@ const inter = Poppins({
   display: 'swap',
 })
 
-const theme = createTheme({
+const light = createTheme({
   fontFamily: inter.style.fontFamily,
   palette: {
     primary: '#1E1E24',
@@ -24,7 +24,7 @@ const theme = createTheme({
 })
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <UIThemeProvider theme={theme}>
+    <UIThemeProvider theme={light}>
       <AlertContextProvider>
         <Component {...pageProps} />
       </AlertContextProvider>
