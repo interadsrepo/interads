@@ -5,7 +5,9 @@ export const IsNotEmpty = (cb: (err: boolean | undefined, success: boolean) => v
     Object.defineProperty(target, foo, {
       set: (newValue: any) => {
         currentValue = newValue
-        console.log({ target, foo, currentValue, newValue })
+        const err = false
+        const success = true
+        cb(err, success)
       },
       get: () => currentValue,
     })

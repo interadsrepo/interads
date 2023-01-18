@@ -9,12 +9,6 @@ describe('Validator Decorator', () => {
       name!: string
     }
 
-    const person: Person = {
-      name: '',
-    }
-
-    const foo = new Person()
-    console.log(foo.name)
     expect(true).toBe(true)
   })
 })
