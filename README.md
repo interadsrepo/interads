@@ -13,6 +13,8 @@ Component List:
   - [x] Theming
 - [x] Button
   - [x] Theming
+- [x] Tooltip
+  - [x] Theming
 - [x] TextView
   - [x] Theming
 - [x] Input

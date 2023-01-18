@@ -11,7 +11,9 @@ export const IAButton = styled('button')<IAButtonProps>`
   transition: background 0.2s ease, filter 0.2s;
   width: ${({ fullWidth }) => (fullWidth ? '100%' : 'max-content')};
   display: flex;
+  flex-direction: row;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
   border-radius: 0.5rem;
   font-weight: 500;

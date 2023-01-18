@@ -54,29 +54,3 @@ export const palette: PaletteTheme = {
   success: '#4CAF50',
   warning: '#FFC107',
 }
-export const paletteAdvance: PaletteAdvanceTheme = {
-  primary: {
-    default: '#19223F',
-    light: '#fff',
-  },
-  error: {
-    default: '#FC4549',
-    light: '#fff',
-  },
-  info: {
-    default: '#00C6FF',
-    light: '#fff',
-  },
-  secondary: {
-    default: '#6e30ea',
-    light: '#fff',
-  },
-  success: {
-    default: '#4CAF50',
-    light: '#fff',
-  },
-  warning: {
-    default: '#FFC107',
-    light: '#fff',
-  },
-}

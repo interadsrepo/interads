@@ -1,6 +1,11 @@
 export type PaletteType = 'primary' | 'secondary' | 'info' | 'success' | 'error' | 'warning'
 export type MaterialSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 
+export type IconProps = {
+  [key: string]: any
+  size?: string
+}
+
 export const cssProps = [
   'padding',
   'paddingBottom',

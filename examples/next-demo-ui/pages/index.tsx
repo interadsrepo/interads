@@ -9,31 +9,26 @@ import {
   Input,
   InputField,
   TextView,
-  UIThemeProvider,
-  createTheme,
+  Tooltip,
+  useAlert,
 } from '@interads/ui'
 
-import { Poppins } from '@next/font/google'
-
 import { MagnifyingGlass, Question, UserCircle } from 'phosphor-react'
-
-const inter = Poppins({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800'],
-  display: 'swap',
-})
-
-const theme = createTheme({
-  fontFamily: inter.style.fontFamily,
-  palette: {
-    primary: '#1E1E24',
-    secondary: '#FF7F27',
-  },
-
-  button: {},
-})
+import Modal, { ModalBody, ModalFoot, ModalHead } from 'packages/ui/src/material/Modal'
 
 export default function Home() {
+  const alert = useAlert()
+
+  const openAlert = (variant: 'success' | 'error' | 'warning') => {
+    alert({
+      title: 'Alert!',
+      message: 'Message of alert here!!!',
+      variant,
+    })
+      .then(() => {})
+      .catch(() => {})
+  }
+  const [modal, setModal] = React.useState<string | null>(null)
   return (
     <React.Fragment>
       <Head>
@@ -44,147 +39,312 @@ export default function Home() {
       </Head>
       <main style={{ width: '100vw' }}>
         <h1>Demo</h1>
-        <UIThemeProvider theme={theme}>
-          <Box padding="1rem" fullWidth>
-            <Box>
-              <TextView>aaaaaaaaaaaaaaaaaaaaaaaaa</TextView>{' '}
-              <TextView>aaaaaaaaaaaaaaaaaaaaaaaaa</TextView>
-            </Box>
-            <Box marginBottom="1rem" display="flex" alignItems="center" gap="1rem">
-              <Button type="button" palette="secondary" size="xs">
-                <UserCircle weight="fill" />
-                Button Theme
-              </Button>
-              <Button type="button" palette="secondary" variant="custom" size="sm">
-                <UserCircle weight="fill" />
-                Button Theme
-              </Button>
-              <Button type="button" palette="secondary" size="md">
-                <UserCircle weight="fill" />
-                Button Theme
-              </Button>
-              <Button type="button" palette="secondary" size="lg">
-                <UserCircle weight="fill" />
-                Button Theme
-              </Button>
-              <Button type="button" palette="secondary" size="xl">
-                <UserCircle weight="fill" />
-                Button Theme
-              </Button>
-            </Box>
-            <Box marginBottom="1rem" display="flex" alignItems="center" gap="1rem">
-              <Button type="button" palette="secondary" variant="outline" size="xs">
-                <UserCircle weight="fill" />
-                Button Theme
-              </Button>
-              <Button type="button" palette="secondary" variant="outline" size="sm">
-                <UserCircle weight="fill" />
-                Button Theme
-              </Button>
-              <Button type="button" palette="secondary" variant="outline" size="md">
-                <UserCircle weight="fill" />
-                Button Theme
-              </Button>
-              <Button type="button" palette="secondary" variant="outline" size="lg">
-                <UserCircle weight="fill" />
-                Button Theme
-              </Button>
-              <Button type="button" palette="secondary" variant="outline" size="xl">
-                <UserCircle weight="fill" />
-                Button Theme
-              </Button>
-            </Box>
-            <Box marginBottom="1rem" display="flex" alignItems="center" gap="1rem">
-              <IconButton type="button" palette="secondary" size="xs">
-                <UserCircle weight="fill" />
-              </IconButton>
-              <IconButton type="button" palette="secondary" size="sm">
-                <UserCircle weight="fill" />
-              </IconButton>
-              <IconButton type="button" palette="secondary" size="md">
-                <UserCircle weight="fill" />
-              </IconButton>
-              <IconButton type="button" palette="secondary" size="lg">
-                <UserCircle weight="fill" />
-              </IconButton>
-              <IconButton type="button" palette="secondary" size="xl">
-                <UserCircle weight="fill" />
-              </IconButton>
-            </Box>
-            <Box marginBottom="1rem" display="flex" alignItems="center" gap="1rem">
-              <IconButton type="button" palette="secondary" variant="outline" size="xs">
-                <UserCircle weight="fill" />
-              </IconButton>
-              <IconButton type="button" palette="secondary" variant="outline" size="sm">
-                <UserCircle weight="fill" />
-              </IconButton>
-              <IconButton type="button" palette="secondary" variant="outline" size="md">
-                <UserCircle weight="fill" />
-              </IconButton>
-              <IconButton type="button" palette="secondary" variant="outline" size="lg">
-                <UserCircle weight="fill" />
-              </IconButton>
-              <IconButton type="button" palette="secondary" variant="outline" size="xl">
-                <UserCircle weight="fill" />
-              </IconButton>
-            </Box>
-            <Grid marginBottom="1rem" gap="1rem">
-              <GridItem md={3}>
-                <Input type="password" fullWidth autoFocus />
-              </GridItem>
-              <GridItem md={3}>
-                <Input type="text" fullWidth autoFocus palette="primary" />
-              </GridItem>
-            </Grid>
-            <Grid marginBottom="1rem" gap="1rem">
-              <GridItem md={3}>
-                <InputField
-                  type="text"
-                  fullWidth
-                  autoFocus
-                  iconHelp={<Question weight="fill" />}
-                  title="Insert your domain here"
-                  textHelp="Insert Url"
-                  startAddOn="http://"
-                />
-              </GridItem>
-              <GridItem md={3}>
-                <InputField
-                  type="text"
-                  fullWidth
-                  autoFocus
-                  status="info"
-                  startAdornment={<UserCircle />}
-                  iconHelp={<Question weight="fill" />}
-                  title="Woi"
-                />
-              </GridItem>
-              <GridItem md={3}>
-                <InputField
-                  type="text"
-                  fullWidth
-                  autoFocus
-                  status="warning"
-                  endAdornment={<MagnifyingGlass />}
-                  title="Woi"
-                />
-              </GridItem>
-              <GridItem md={3}>
-                <InputField
-                  type="text"
-                  fullWidth
-                  autoFocus
-                  status="error"
-                  startAdornment={<UserCircle />}
-                  iconHelp={<Question weight="fill" />}
-                  title="Woi"
-                  textHelp="Hallo"
-                  startAddOn="Haloo"
-                />
-              </GridItem>
-            </Grid>
+
+        <Box padding="1rem" fullWidth>
+          <Box>
+            <TextView>Hello this is me</TextView>
           </Box>
-        </UIThemeProvider>
+          <Box>
+            <Tooltip content="helo">
+              <TextView>Hello hover me</TextView>
+            </Tooltip>
+          </Box>
+          <Box marginBottom="1rem" display="flex" alignItems="center" gap="1rem">
+            <Button type="button" palette="secondary" size="xs">
+              <UserCircle weight="fill" />
+              Button Theme
+            </Button>
+            <Button type="button" palette="secondary" variant="custom" size="sm">
+              <UserCircle weight="fill" />
+              Button Theme
+            </Button>
+            <Button type="button" palette="secondary" size="md">
+              <UserCircle weight="fill" />
+              Button Theme
+            </Button>
+            <Button type="button" palette="secondary" size="lg">
+              <UserCircle weight="fill" />
+              Button Theme
+            </Button>
+            <Button type="button" palette="secondary" size="xl">
+              <UserCircle weight="fill" />
+              Button Theme
+            </Button>
+          </Box>
+          <Box marginBottom="1rem" display="flex" alignItems="center" gap="1rem">
+            <Button type="button" palette="secondary" variant="outline" size="xs">
+              <UserCircle weight="fill" />
+              Button Theme
+            </Button>
+            <Button type="button" palette="secondary" variant="outline" size="sm">
+              <UserCircle weight="fill" />
+              Button Theme
+            </Button>
+            <Button type="button" palette="secondary" variant="outline" size="md">
+              <UserCircle weight="fill" />
+              Button Theme
+            </Button>
+            <Button type="button" palette="secondary" variant="outline" size="lg">
+              <UserCircle weight="fill" />
+              Button Theme
+            </Button>
+            <Button type="button" palette="secondary" variant="outline" size="xl">
+              <UserCircle weight="fill" />
+              Button Theme
+            </Button>
+          </Box>
+          <Box marginBottom="1rem" display="flex" alignItems="center" gap="1rem">
+            <IconButton type="button" palette="secondary" size="xs">
+              <UserCircle weight="fill" />
+            </IconButton>
+            <IconButton type="button" palette="secondary" size="sm">
+              <UserCircle weight="fill" />
+            </IconButton>
+            <IconButton type="button" palette="secondary" size="md">
+              <UserCircle weight="fill" />
+            </IconButton>
+            <IconButton type="button" palette="secondary" size="lg">
+              <UserCircle weight="fill" />
+            </IconButton>
+            <IconButton type="button" palette="secondary" size="xl">
+              <UserCircle weight="fill" />
+            </IconButton>
+          </Box>
+          <Box marginBottom="1rem" display="flex" alignItems="center" gap="1rem">
+            <IconButton type="button" palette="secondary" variant="outline" size="xs">
+              <UserCircle weight="fill" />
+            </IconButton>
+            <IconButton type="button" palette="secondary" variant="outline" size="sm">
+              <UserCircle weight="fill" />
+            </IconButton>
+            <IconButton type="button" palette="secondary" variant="outline" size="md">
+              <UserCircle weight="fill" />
+            </IconButton>
+            <IconButton type="button" palette="secondary" variant="outline" size="lg">
+              <UserCircle weight="fill" />
+            </IconButton>
+            <IconButton type="button" palette="secondary" variant="outline" size="xl">
+              <UserCircle weight="fill" />
+            </IconButton>
+          </Box>
+          <Grid marginBottom="1rem" gap="1rem">
+            <GridItem md={3}>
+              <Input type="password" fullWidth autoFocus />
+            </GridItem>
+            <GridItem md={3}>
+              <Input type="text" fullWidth autoFocus palette="primary" />
+            </GridItem>
+          </Grid>
+          <Grid breakpoints={10} marginBottom="1rem" gap="1rem">
+            <GridItem md={2}>
+              <InputField
+                type="text"
+                fullWidth
+                autoFocus
+                iconHelp={<Question weight="fill" />}
+                title="Insert your domain here"
+                textHelp="Insert Url"
+                startAddOn="http://"
+              />
+            </GridItem>
+            <GridItem md={2}>
+              <InputField
+                type="text"
+                fullWidth
+                autoFocus
+                status="success"
+                startAdornment={<UserCircle />}
+                iconHelp={<Question weight="fill" />}
+                title="Woi"
+                textHelp="Hallo"
+                startAddOn="Haloo"
+              />
+            </GridItem>
+            <GridItem md={2}>
+              <InputField
+                type="text"
+                fullWidth
+                autoFocus
+                status="info"
+                startAdornment={<UserCircle />}
+                iconHelp={<Question weight="fill" />}
+                title="Woi"
+              />
+            </GridItem>
+            <GridItem md={2}>
+              <InputField
+                type="text"
+                fullWidth
+                autoFocus
+                status="warning"
+                endAdornment={<MagnifyingGlass />}
+                title="Woi"
+              />
+            </GridItem>
+            <GridItem md={2}>
+              <InputField
+                type="text"
+                fullWidth
+                autoFocus
+                status="error"
+                startAdornment={<UserCircle />}
+                iconHelp={<Question weight="fill" />}
+                title="Woi"
+                textHelp="Hallo"
+                startAddOn="Haloo"
+              />
+            </GridItem>
+          </Grid>
+          <Grid marginBottom="1rem" gap="1rem">
+            <GridItem md={4}>
+              <Button palette="success" onClick={() => openAlert('success')} fullWidth>
+                Success
+              </Button>
+            </GridItem>
+            <GridItem md={4}>
+              <Button palette="error" onClick={() => openAlert('error')} fullWidth>
+                Error
+              </Button>
+            </GridItem>
+            <GridItem md={4}>
+              <Button palette="warning" onClick={() => openAlert('warning')} fullWidth>
+                Warning
+              </Button>
+            </GridItem>
+          </Grid>
+          <Grid marginBottom="1rem" gap="1rem">
+            <GridItem md={6}>
+              <Button variant="outline" onClick={() => setModal('body')} fullWidth>
+                Scroll Body
+              </Button>
+            </GridItem>
+            <GridItem md={6}>
+              <Button variant="outline" onClick={() => setModal('content')} fullWidth>
+                Scroll Content
+              </Button>
+            </GridItem>
+          </Grid>
+        </Box>
+        <Modal open={modal === 'body'} round onClose={() => setModal(null)}>
+          <ModalHead>Modal Scroll Head</ModalHead>
+          <ModalBody>
+            <TextView>
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+              has been the industry&apps;s standard dummy text ever since the 1500s, when an unknown
+              printer took a galley of type and scrambled it to make a type specimen book. It has
+              survived not only five centuries, but also the leap into electronic typesetting,
+              remaining essentially unchanged. It was popularised in the 1960s with the release of
+              Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
+              publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+            </TextView>
+            <TextView>
+              Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a
+              piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard
+              McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of
+              the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going
+              through the cites of the word in classical literature, discovered the undoubtable
+              source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of &quot;de Finibus
+              Bonorum et Malorum&quot; (The Extremes of Good and Evil) by Cicero, written in 45 BC.
+              This book is a treatise on the theory of ethics, very popular during the Renaissance.
+              The first line of Lorem Ipsum, &quot;Lorem ipsum dolor sit amet..&quot;, comes from a
+              line in section 1.10.32.
+            </TextView>
+            <TextView>
+              The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those
+              interested. Sections 1.10.32 and 1.10.33 from &quot;de Finibus Bonorum et
+              Malorum&quot; by Cicero are also reproduced in their exact original form, accompanied
+              by English versions from the 1914 translation by H. Rackham.
+            </TextView>
+            <TextView>
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+              has been the industry&apps;s standard dummy text ever since the 1500s, when an unknown
+              printer took a galley of type and scrambled it to make a type specimen book. It has
+              survived not only five centuries, but also the leap into electronic typesetting,
+              remaining essentially unchanged. It was popularised in the 1960s with the release of
+              Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
+              publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+            </TextView>
+            <TextView>
+              Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a
+              piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard
+              McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of
+              the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going
+              through the cites of the word in classical literature, discovered the undoubtable
+              source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of &quot;de Finibus
+              Bonorum et Malorum&quot; (The Extremes of Good and Evil) by Cicero, written in 45 BC.
+              This book is a treatise on the theory of ethics, very popular during the Renaissance.
+              The first line of Lorem Ipsum, &quot;Lorem ipsum dolor sit amet..&quot;, comes from a
+              line in section 1.10.32.
+            </TextView>
+            <TextView>
+              The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those
+              interested. Sections 1.10.32 and 1.10.33 from &quot;de Finibus Bonorum et
+              Malorum&quot; by Cicero are also reproduced in their exact original form, accompanied
+              by English versions from the 1914 translation by H. Rackham.
+            </TextView>
+          </ModalBody>
+          <ModalFoot>Modal Scroll Foot</ModalFoot>
+        </Modal>
+        <Modal scroll="content" open={modal === 'content'} round onClose={() => setModal(null)}>
+          <ModalHead>Modal Scroll Head</ModalHead>
+          <ModalBody>
+            <TextView>
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+              has been the industry&apps;s standard dummy text ever since the 1500s, when an unknown
+              printer took a galley of type and scrambled it to make a type specimen book. It has
+              survived not only five centuries, but also the leap into electronic typesetting,
+              remaining essentially unchanged. It was popularised in the 1960s with the release of
+              Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
+              publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+            </TextView>
+            <TextView>
+              Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a
+              piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard
+              McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of
+              the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going
+              through the cites of the word in classical literature, discovered the undoubtable
+              source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of &quot;de Finibus
+              Bonorum et Malorum&quot; (The Extremes of Good and Evil) by Cicero, written in 45 BC.
+              This book is a treatise on the theory of ethics, very popular during the Renaissance.
+              The first line of Lorem Ipsum, &quot;Lorem ipsum dolor sit amet..&quot;, comes from a
+              line in section 1.10.32.
+            </TextView>
+            <TextView>
+              The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those
+              interested. Sections 1.10.32 and 1.10.33 from &quot;de Finibus Bonorum et
+              Malorum&quot; by Cicero are also reproduced in their exact original form, accompanied
+              by English versions from the 1914 translation by H. Rackham.
+            </TextView>
+            <TextView>
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+              has been the industry&apps;s standard dummy text ever since the 1500s, when an unknown
+              printer took a galley of type and scrambled it to make a type specimen book. It has
+              survived not only five centuries, but also the leap into electronic typesetting,
+              remaining essentially unchanged. It was popularised in the 1960s with the release of
+              Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
+              publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+            </TextView>
+            <TextView>
+              Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a
+              piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard
+              McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of
+              the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going
+              through the cites of the word in classical literature, discovered the undoubtable
+              source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of &quot;de Finibus
+              Bonorum et Malorum&quot; (The Extremes of Good and Evil) by Cicero, written in 45 BC.
+              This book is a treatise on the theory of ethics, very popular during the Renaissance.
+              The first line of Lorem Ipsum, &quot;Lorem ipsum dolor sit amet..&quot;, comes from a
+              line in section 1.10.32.
+            </TextView>
+            <TextView>
+              The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those
+              interested. Sections 1.10.32 and 1.10.33 from &quot;de Finibus Bonorum et
+              Malorum&quot; by Cicero are also reproduced in their exact original form, accompanied
+              by English versions from the 1914 translation by H. Rackham.
+            </TextView>
+          </ModalBody>
+          <ModalFoot>Modal Scroll Foot</ModalFoot>
+        </Modal>
       </main>
     </React.Fragment>
   )
