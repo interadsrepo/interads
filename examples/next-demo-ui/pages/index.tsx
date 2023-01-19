@@ -41,7 +41,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main style={{ width: '100vw' }}>
+      <main>
         <h1>Demo</h1>
 
         <Box padding="1rem" fullWidth>

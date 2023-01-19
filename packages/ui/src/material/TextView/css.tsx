@@ -12,7 +12,7 @@ export const IATextView = styled('p')<IATextViewProps>`
     return customStyle ? css(customStyle) : null
   }}
   ${({ theme, variant }) => {
-    const customStyle = theme?.box?.variant?.[variant.toString()]?.root
+    const customStyle = theme?.textView?.variant?.[variant.toString()]?.root
     return customStyle ? css(customStyle) : null
   }}
 `
