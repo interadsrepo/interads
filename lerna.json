@@ -3,9 +3,6 @@
   "useWorkspaces": true,
   "npmClient": "pnpm",
   "command": {
-    "version": {
-      "exact": true
-    },
     "publish": {
       "npmClient": "npm",
       "conventionalCommits": true
@@ -14,5 +11,5 @@
       "npmClient": "pnpm"
     }
   },
-  "version": "0.10.0"
+  "version": "independent"
 }
