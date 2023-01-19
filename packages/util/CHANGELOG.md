@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.12.0](https://github.com/interadsrepo/interads/compare/@interads/util@0.11.0...@interads/util@0.12.0) (2023-01-19)
+
+### Bug Fixes
+
+- **util:** bug on crypto ([78c1876](https://github.com/interadsrepo/interads/commit/78c1876270fb49ee86b08339878ba78271dc9030))
+- **util:** randomString method ([6aed58a](https://github.com/interadsrepo/interads/commit/6aed58ab10db1ec0a2ccd4badc11e27505bd0cc8))
+
+### BREAKING CHANGES
+
+- **util:** @interads/util @interads/ui cannot resolve crypto
+
 # 0.11.0 (2023-01-19)
 
 ### Features
