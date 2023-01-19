@@ -66,6 +66,7 @@ importers:
       rimraf: ^4.0.4
       rollup: ^2.79.1
       rollup-plugin-node-globals: ^1.4.0
+      rollup-plugin-polyfill-node: ^0.11.0
       styled-components: ^5.3.6
       tinycolor2: 1.5.2
       ts-jest: 29.0.5
@@ -136,6 +137,7 @@ importers:
       rimraf: 4.0.4
       rollup: 2.79.1
       rollup-plugin-node-globals: 1.4.0
+      rollup-plugin-polyfill-node: 0.11.0_rollup@2.79.1
       styled-components: 5.3.6_7i5myeigehqah43i5u7wbekgba
       tinycolor2: 1.5.2
       ts-jest: 29.0.5_b6ud3wjfzxmze5tmlpgpdpo43e
@@ -3360,6 +3362,21 @@ packages:
       estree-walker: 2.0.2
       glob: 8.0.3
       is-reference: 1.2.1
+      magic-string: 0.27.0
+      rollup: 2.79.1
+    dev: true
+
+  /@rollup/plugin-inject/5.0.3_rollup@2.79.1:
+    resolution: {integrity: sha512-411QlbL+z2yXpRWFXSmw/teQRMkXcAAC8aYTemc15gwJRpvEVDQwoe+N/HTFD8RFG8+88Bme9DK2V9CVm7hJdA==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      rollup: ^1.20.0||^2.0.0||^3.0.0
+    peerDependenciesMeta:
+      rollup:
+        optional: true
+    dependencies:
+      '@rollup/pluginutils': 5.0.2_rollup@2.79.1
+      estree-walker: 2.0.2
       magic-string: 0.27.0
       rollup: 2.79.1
     dev: true
@@ -10096,6 +10113,15 @@ packages:
       magic-string: 0.22.5
       process-es6: 0.11.6
       rollup-pluginutils: 2.8.2
+    dev: true
+
+  /rollup-plugin-polyfill-node/0.11.0_rollup@2.79.1:
+    resolution: {integrity: sha512-5t+qhq4LAQKQBgbPOQJEoxxGzU5b+zLfvzpUAGy9u0MCMs8y+mrjUAv8+xrkWdxnwXQwJtjmCMnA9lCflsMzNw==}
+    peerDependencies:
+      rollup: ^1.20.0 || ^2.0.0 || ^3.0.0
+    dependencies:
+      '@rollup/plugin-inject': 5.0.3_rollup@2.79.1
+      rollup: 2.79.1
     dev: true
 
   /rollup-pluginutils/2.8.2:

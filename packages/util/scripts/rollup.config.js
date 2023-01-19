@@ -3,6 +3,7 @@ import nodeResolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import babel from '@rollup/plugin-babel'
 import nodeGlobals from 'rollup-plugin-node-globals'
+import nodePolyfill from 'rollup-plugin-polyfill-node'
 import pkg from '../package.json'
 
 const input = './src/index.ts'
@@ -36,6 +37,7 @@ export default  [
       commonjs(commonjsOptions),
       babel(babelOptions),
       nodeGlobals(),
+      nodePolyfill()
     ]
   },
   {
@@ -52,6 +54,7 @@ export default  [
       commonjs(commonjsOptions),
       babel(babelOptions),
       nodeGlobals(),
+      nodePolyfill()
     ]
   },
   {
@@ -68,6 +71,7 @@ export default  [
       babel(babelOptions),
       commonjs(commonjsOptions),
       nodeGlobals(),
+      nodePolyfill()
     ]
   }
 ]
