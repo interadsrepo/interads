@@ -15,6 +15,7 @@ import {
   ModalBody,
   ModalFoot,
   ModalHead,
+  Pagination,
 } from '@interads/ui'
 
 import { MagnifyingGlass, Question, UserCircle } from 'phosphor-react'
@@ -228,6 +229,7 @@ export default function Home() {
               </Button>
             </GridItem>
           </Grid>
+          <Pagination page={1} perPage={10} onChangePage={() => {}} />
         </Box>
         <Modal open={modal === 'body'} round onClose={() => setModal(null)}>
           <ModalHead>Modal Scroll Head</ModalHead>
