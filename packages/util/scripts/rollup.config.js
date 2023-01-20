@@ -4,8 +4,7 @@ import commonjs from '@rollup/plugin-commonjs'
 import babel from '@rollup/plugin-babel'
 import nodeGlobals from 'rollup-plugin-node-globals'
 import nodePolyfill from 'rollup-plugin-polyfill-node'
-import replace from '@rollup/plugin-replace';
-
+import replace from '@rollup/plugin-replace'
 
 const input = './src/index.ts'
 const globals = {
@@ -20,11 +19,11 @@ const babelOptions = {
 }
 const commonjsOptions = {
   ignoreGlobal: true,
-  include: /node_modules/
+  include: /node_modules/,
 }
 const nodeOptions = {
   extensions: ['.js', '.tsx', '.ts'],
-};
+}
 
 function onwarn(warning) {
   if (
@@ -32,13 +31,13 @@ function onwarn(warning) {
     warning.source === 'react' &&
     warning.names.filter((identifier) => identifier !== 'useDebugValue').length === 0
   ) {
-    console.warn(warning.message);
+    console.warn(warning.message)
   } else {
-    throw Error(warning.message);
+    throw Error(warning.message)
   }
 }
 
-export default  [
+export default [
   {
     input,
     onwarn,

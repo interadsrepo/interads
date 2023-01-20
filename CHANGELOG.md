@@ -1,6 +1,7 @@
 # [Versions](https://interads.co.id)
 
-## 0.13.0 
+## 0.13.0
+
 <!-- generated comparing v0.10.0..main -->
 
 _Jan 20, 2023_
@@ -32,4 +33,3 @@ A big thanks to the 1 contributors who made this release possible. Here are some
 - &#8203;<!-- 01 -->feat(ui): add browers support list @pratamaizzat
 
 All contributors of this release in alphabetical order: @pratamaizzat
-

@@ -1,30 +1,30 @@
 /* eslint-disable no-restricted-syntax */
-import { Octokit } from '@octokit/rest';
-import childProcess from 'child_process';
-import { promisify } from 'util';
-import yargs from 'yargs';
+import { Octokit } from '@octokit/rest'
+import childProcess from 'child_process'
+import { promisify } from 'util'
+import yargs from 'yargs'
 
-const exec = promisify(childProcess.exec);
+const exec = promisify(childProcess.exec)
 
 /**
  * @param {string} commitMessage
  * @returns {string} The tags in lowercases, ordered ascending and comma separated
  */
 function parseTags(commitMessage) {
-  const tagMatch = commitMessage.match(/^(\[[\w-]+\])+/);
+  const tagMatch = commitMessage.match(/^(\[[\w-]+\])+/)
   if (tagMatch === null) {
-    return '';
+    return ''
   }
-  const [tagsWithBracketDelimiter] = tagMatch;
+  const [tagsWithBracketDelimiter] = tagMatch
   return tagsWithBracketDelimiter
     .match(/([\w-]+)/g)
     .map((tag) => {
-      return tag.toLocaleLowerCase();
+      return tag.toLocaleLowerCase()
     })
     .sort((a, b) => {
-      return a.localeCompare(b);
+      return a.localeCompare(b)
     })
-    .join(',');
+    .join(',')
 }
 
 /**
@@ -33,7 +33,7 @@ function parseTags(commitMessage) {
 function filterCommit(commitsItem) {
   // TODO: Use labels
   // Filter dependency updates
-  return !commitsItem.commit.message.startsWith('Bump');
+  return !commitsItem.commit.message.startsWith('Bump')
 }
 
 async function findLatestTaggedVersion() {
@@ -48,29 +48,29 @@ async function findLatestTaggedVersion() {
       // only include "version-tags"
       '--match "v*"',
     ].join(' '),
-  );
+  )
 
-  return stdout.trim();
+  return stdout.trim()
 }
 
 async function main(argv) {
-  const { githubToken, lastRelease: lastReleaseInput, release, repo } = argv;
+  const { githubToken, lastRelease: lastReleaseInput, release, repo } = argv
 
   if (!githubToken) {
     throw new TypeError(
       'Unable to authenticate. Make sure you either call the script with `--githubToken $token` or set `process.env.GITHUB_TOKEN`. The token needs `public_repo` permissions.',
-    );
+    )
   }
   const octokit = new Octokit({
     auth: githubToken,
-  });
+  })
 
-  const latestTaggedVersion = await findLatestTaggedVersion();
-  const lastRelease = lastReleaseInput !== undefined ? lastReleaseInput : latestTaggedVersion;
+  const latestTaggedVersion = await findLatestTaggedVersion()
+  const lastRelease = lastReleaseInput !== undefined ? lastReleaseInput : latestTaggedVersion
   if (lastRelease !== latestTaggedVersion) {
     console.warn(
       `Creating changelog for ${lastRelease}..${release} when latest tagged version is '${latestTaggedVersion}'.`,
-    );
+    )
   }
 
   /**
@@ -83,42 +83,42 @@ async function main(argv) {
       base: lastRelease,
       head: release,
     }),
-  );
+  )
 
   /**
    * @type {Octokit.ReposCompareCommitsResponseCommitsItem[]}
    */
-  const commitsItems = [];
+  const commitsItems = []
   for await (const response of timeline) {
-    const { data: compareCommits } = response;
-    commitsItems.push(...compareCommits.commits.filter(filterCommit));
+    const { data: compareCommits } = response
+    commitsItems.push(...compareCommits.commits.filter(filterCommit))
   }
 
   const authors = Array.from(
     new Set(
       commitsItems.map((commitsItem) => {
-        return commitsItem.author.login;
+        return commitsItem.author.login
       }),
     ),
-  );
+  )
   const contributorHandles = authors
     .sort((a, b) => a.localeCompare(b))
     .map((author) => `@${author}`)
-    .join(', ');
+    .join(', ')
 
   // We don't know when a particular commit was made from the API.
   // Only that the commits are ordered by date ASC
-  const commitsItemsByDateDesc = commitsItems.slice().reverse();
+  const commitsItemsByDateDesc = commitsItems.slice().reverse()
   // Sort by tags ASC, date desc
   // Will only consider exact matches of tags so `[Slider]` will not be grouped with `[Slider][Modal]`
   commitsItems.sort((a, b) => {
-    const aTags = parseTags(a.commit.message);
-    const bTags = parseTags(b.commit.message);
+    const aTags = parseTags(a.commit.message)
+    const bTags = parseTags(b.commit.message)
     if (aTags === bTags) {
-      return commitsItemsByDateDesc.indexOf(a) - commitsItemsByDateDesc.indexOf(b);
+      return commitsItemsByDateDesc.indexOf(a) - commitsItemsByDateDesc.indexOf(b)
     }
-    return aTags.localeCompare(bTags);
-  });
+    return aTags.localeCompare(bTags)
+  })
   const changes = commitsItems.map((commitsItem) => {
     // Helps changelog author keeping track of order when grouping commits under headings.
     // &#8203; is a zero-width-space that ensures that the content of the listitem is formatted properly
@@ -126,15 +126,15 @@ async function main(argv) {
       .toString()
       // Padding them with a zero means we can just feed a list into online sorting tools like https://www.online-utility.org/text/sort.jsp
       // i.e. we can sort the lines alphanumerically
-      .padStart(Math.floor(Math.log10(commitsItemsByDateDesc.length)) + 1, '0')} -->`;
-    const shortMessage = commitsItem.commit.message.split('\n')[0];
-    return `- ${dateSortMarker}${shortMessage} @${commitsItem.author.login}`;
-  });
+      .padStart(Math.floor(Math.log10(commitsItemsByDateDesc.length)) + 1, '0')} -->`
+    const shortMessage = commitsItem.commit.message.split('\n')[0]
+    return `- ${dateSortMarker}${shortMessage} @${commitsItem.author.login}`
+  })
   const nowFormatted = new Date().toLocaleDateString('en-US', {
     month: 'short',
     day: 'numeric',
     year: 'numeric',
-  });
+  })
 
   const changelog = `
 ## TODO RELEASE NAME
@@ -146,10 +146,10 @@ A big thanks to the ${
 TODO INSERT HIGHLIGHTS
 ${changes.join('\n')}
 All contributors of this release in alphabetical order: ${contributorHandles}
-`;
+`
 
   // eslint-disable-next-line no-console -- output of this script
-  console.log(changelog);
+  console.log(changelog)
 }
 
 yargs(process.argv.slice(2))
@@ -179,11 +179,11 @@ yargs(process.argv.slice(2))
           default: 'interads',
           describe: 'Repository to generate a changelog for',
           type: 'string',
-        });
+        })
     },
     handler: main,
   })
   .help()
   .strict(true)
   .version(false)
-  .parse();
+  .parse()

@@ -1,4 +1,4 @@
-const { rules: baseStyleRules } = require('eslint-config-airbnb-base/rules/style');
+const { rules: baseStyleRules } = require('eslint-config-airbnb-base/rules/style')
 
 module.exports = {
   root: true, // So parent files don't get applied
@@ -6,7 +6,7 @@ module.exports = {
     es6: true,
     browser: true,
     node: true,
-    jest: true
+    jest: true,
   },
   extends: [
     'plugin:eslint-plugin-import/recommended',
@@ -20,10 +20,7 @@ module.exports = {
     ecmaVersion: 7,
     // project: 'tsconfig.json'
   },
-  plugins: [
-    'eslint-plugin-react-hooks',
-    '@typescript-eslint/eslint-plugin',
-  ],
+  plugins: ['eslint-plugin-react-hooks', '@typescript-eslint/eslint-plugin'],
   // settings: {
   //   'import/resolver': {
   //     webpack: {
@@ -106,8 +103,8 @@ module.exports = {
     ],
     // Can add verbosity to small functions making them harder to grok.
     // Though we have to manually enforce it for function components with default values.
-    "react/jsx-uses-react": "off",
-    "react/react-in-jsx-scope": "off",
+    'react/jsx-uses-react': 'off',
+    'react/react-in-jsx-scope': 'off',
     'react/destructuring-assignment': 'off',
     'react/forbid-prop-types': 'off', // Too strict, no time for that
     'react/jsx-curly-brace-presence': 'off', // broken
@@ -204,4 +201,4 @@ module.exports = {
       },
     },
   ],
-};
+}

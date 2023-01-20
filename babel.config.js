@@ -1,14 +1,14 @@
 const path = require('path')
 
 function resolveAliasPath(relativeToBabelConf) {
-  const resolvedPath = path.relative(process.cwd(), path.resolve(__dirname, relativeToBabelConf));
-  return `./${resolvedPath.replace('\\', '/')}`;
+  const resolvedPath = path.relative(process.cwd(), path.resolve(__dirname, relativeToBabelConf))
+  return `./${resolvedPath.replace('\\', '/')}`
 }
 
 const defaultAlias = {
- '@interads/ui': resolveAliasPath('./packages/ui/src'),
- '@interads/util': resolveAliasPath('./packages/util/src'),
- '@interads/hook': resolveAliasPath('./packages/hook/src'),
+  '@interads/ui': resolveAliasPath('./packages/ui/src'),
+  '@interads/util': resolveAliasPath('./packages/util/src'),
+  '@interads/hook': resolveAliasPath('./packages/hook/src'),
 }
 
 module.exports = function getBabelConfig(api) {
@@ -35,10 +35,13 @@ module.exports = function getBabelConfig(api) {
   ]
 
   const plugins = [
-    ['babel-plugin-styled-components', {
-      ssr: true,
-      namespace: 'IA'
-    }],
+    [
+      'babel-plugin-styled-components',
+      {
+        ssr: true,
+        namespace: 'IA',
+      },
+    ],
     ['@babel/plugin-proposal-class-properties', { loose: true }],
     ['@babel/plugin-proposal-private-methods', { loose: true }],
     ['@babel/plugin-proposal-private-property-in-object', { loose: true }],
@@ -60,7 +63,7 @@ module.exports = function getBabelConfig(api) {
         alias: defaultAlias,
         root: ['./'],
       },
-    ]);
+    ])
   }
 
   return {
@@ -69,7 +72,7 @@ module.exports = function getBabelConfig(api) {
     },
     presets,
     plugins,
-    ignore: [/@babel[\\|/]runtime/], 
+    ignore: [/@babel[\\|/]runtime/],
     overrides: [
       {
         exclude: /\.test\.(js|ts|tsx)$/,
@@ -104,9 +107,7 @@ module.exports = function getBabelConfig(api) {
         ],
       },
       legacy: {
-        plugins: [
-          '@babel/plugin-transform-object-assign',
-        ],
+        plugins: ['@babel/plugin-transform-object-assign'],
       },
       test: {
         sourceMaps: 'both',
@@ -120,6 +121,6 @@ module.exports = function getBabelConfig(api) {
           ],
         ],
       },
-    }
+    },
   }
 }
