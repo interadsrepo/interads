@@ -1,8 +1,8 @@
 import * as React from 'react'
-import { AlertProps as AlertPropsBase } from '../material/Alert/props'
-import Alert from '../material/Alert'
+import { AlertPropsBase } from '../Alert/props'
+import Alert from '../Alert'
 
-export const AlertController = () => {
+export const useAlertController = () => {
   const [alertProps, setAlertProps] = React.useState<AlertPropsBase | null>(null)
 
   const awaitingPromiseRef = React.useRef<{
@@ -45,42 +45,34 @@ export const AlertController = () => {
   }
 }
 
-// const AlertContext = React.createContext<ReturnType<typeof AlertController>>({
-//   alertProps: null,
-//   setAlertProps: () => {},
-//   awaitingPromiseRef: { current: undefined },
-//   openAlert: async () => {},
-//   handleClose: () => {},
-//   handleSubmit: () => {},
-// })
+const AlertContext = React.createContext<(option: AlertPropsBase) => Promise<void>>(Promise.reject)
 
-export const AlertContext = React.createContext<(option: AlertPropsBase) => Promise<void>>(
-  Promise.reject,
-)
-
-export const useAlert = () => React.useContext(AlertContext)
-
-interface AlertContextProviderProps {
+interface AlertProviderProps {
   children: React.ReactNode
 }
 
-export const AlertContextProvider: React.FC<AlertContextProviderProps> =
-  function AlertContextProvider({ children }: AlertContextProviderProps) {
-    const { openAlert, alertProps, handleClose, handleCancel, handleSubmit } = AlertController()
-    return (
-      <AlertContext.Provider value={openAlert}>
-        {children}
-        <Alert
-          open={!!alertProps}
-          variant={alertProps?.variant}
-          title={alertProps?.title || ''}
-          message={alertProps?.message || ''}
-          textCancel={alertProps?.textCancel}
-          textConfirm={alertProps?.textConfirm}
-          onCancel={handleCancel}
-          onConfirm={handleSubmit}
-          onClose={handleClose}
-        />
-      </AlertContext.Provider>
-    )
-  }
+const AlertProvider: React.FC<AlertProviderProps> = function AlertProvider({
+  children,
+}: AlertProviderProps) {
+  const { openAlert, alertProps, handleClose, handleCancel, handleSubmit } = useAlertController()
+  return (
+    <AlertContext.Provider value={openAlert}>
+      {children}
+      <Alert
+        open={!!alertProps}
+        variant={alertProps?.variant}
+        title={alertProps?.title || ''}
+        message={alertProps?.message || ''}
+        textCancel={alertProps?.textCancel}
+        textConfirm={alertProps?.textConfirm}
+        onCancel={handleCancel}
+        onConfirm={handleSubmit}
+        onClose={handleClose}
+      />
+    </AlertContext.Provider>
+  )
+}
+
+export default AlertProvider
+
+export const useAlert = () => React.useContext(AlertContext)

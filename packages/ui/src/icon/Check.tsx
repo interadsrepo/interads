@@ -1,6 +1,6 @@
 import { IconProps } from '../constant'
 
-export function Check(props: IconProps) {
+function Check(props: IconProps) {
   const { color, size } = props
   return (
     <svg

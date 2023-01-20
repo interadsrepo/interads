@@ -21,7 +21,7 @@ interface UIThemeProviderProps {
   theme?: DefaultTheme
 }
 
-export const UIThemeProvider: React.FC<UIThemeProviderProps> = function UIThemeProvier(props) {
+const UIThemeProvider: React.FC<UIThemeProviderProps> = function UIThemeProvier(props) {
   const value = useThemeController(props.theme)
   return (
     <UIThemeContext.Provider value={value}>

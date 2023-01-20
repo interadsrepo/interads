@@ -1,6 +1,6 @@
 import { IconProps } from '../constant'
 
-export function CheckCircle(props: IconProps) {
+function CheckCircle(props: IconProps) {
   const { color } = props
   return (
     <svg viewBox="0 0 32 32" fill={color || 'currentColor'} xmlns="http://www.w3.org/2000/svg">
