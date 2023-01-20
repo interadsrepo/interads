@@ -183,7 +183,7 @@ importers:
   packages/ui:
     specifiers:
       '@babel/runtime': 7.20.7
-      '@interads/util': 0.10.0
+      '@interads/util': ^0.12.0
       react-is: ^18.2.0
     dependencies:
       '@babel/runtime': 7.20.7
