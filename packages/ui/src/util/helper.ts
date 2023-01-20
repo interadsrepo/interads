@@ -21,6 +21,7 @@ export function random(length: number) {
   }
   return result
 }
+
 export const useUniqueId = (length = 20) => {
   const [id, setId] = React.useState('')
   const rand = random(length)
@@ -32,4 +33,3 @@ export const useUniqueId = (length = 20) => {
 
   return id
 }
-export default getPropStyle

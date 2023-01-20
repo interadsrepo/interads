@@ -6,8 +6,8 @@
     "noEmit": false,
     "emitDeclarationOnly": true,
     "rootDir": "./src",
-    "declarationDir": "lib/src"
+    "outDir": "lib"
   },
-  "include": ["src/**/*.ts*"],
-  "exclude": ["node_modules", "test", "**/*spec.ts"]
+  "include": ["./src/**/*.ts*"],
+  "exclude": ["src/**/*.spec.ts*", "src/**/*.test.ts*"]
 }
