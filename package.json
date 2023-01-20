@@ -8,7 +8,7 @@
     "release:changelog": "node scripts/releaseChangelog.mjs",
     "release:version": "lerna version --no-changelog --no-push --no-git-tag-version",
     "release:build": "lerna run --parallel --scope \"@interads/*\" build",
-    "release:publish": "lerna publish from-package --dist-tag latest --contents lib",
+    "release:publish": "cross-env HUSKY=0 lerna publish from-package --dist-tag latest --contents lib",
     "release:tag": "node scripts/releaseTag.mjs",
     "test": "lerna run test",
     "build": "lerna run --parallel --scope \"@interads/*\" build",
