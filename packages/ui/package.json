@@ -5,24 +5,15 @@
   "author": "pratamaizzat <pratama.izzat231298@gmail.com>",
   "homepage": "",
   "license": "MIT",
-  "main": "./lib/index.js",
-  "module": "./lib/esm/index.js",
-  "browser": "./lib/index.js",
-  "types": "./lib/index.d.ts",
-  "directories": {
-    "lib": "lib"
-  },
-  "files": [
-    "lib"
-  ],
+  "main": "./src/index.ts",
   "scripts": {
     "type-check": "tsc --noEmit",
-    "type-check:watch": "pnpm run type-check --watch",
     "prebuild": "rimraf lib tsconfig.build.tsbuildinfo && pnpm run type-check",
-    "build": "pnpm run build:node && pnpm run build:stable && pnpm pnpm run build:umd && pnpm run build:types",
+    "build": "pnpm run build:node && pnpm run build:stable && pnpm run build:umd && pnpm run build:types && pnpm run build:copy-files",
     "build:types": "node ../../scripts/buildTypes.mjs",
     "build:node": "node ../../scripts/build.mjs node",
     "build:stable": "node ../../scripts/build.mjs stable",
+    "build:copy-files": "node ../../scripts/copyFiles.mjs",
     "build:umd": "cross-env BABEL_ENV=stable rollup -c scripts/rollup.config.js"
   },
   "peerDependencies": {
@@ -37,6 +28,7 @@
     "styled-components": "^5.3.6",
     "tinycolor2": "1.5.2"
   },
+  "sideEffects": false,
   "peerDependenciesMeta": {
     "@types/react": {
       "optional": true
@@ -61,5 +53,9 @@
     "@babel/runtime": "7.20.7",
     "@interads/util": "^0.12.0",
     "react-is": "^18.2.0"
-  }
+  },
+  "engines": {
+    "node": ">=14.6.0"
+  },
+  "packageManager": "pnpm@7.24.3"
 }

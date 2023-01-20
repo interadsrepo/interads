@@ -1,10 +1,17 @@
 # `@interads/ui`
 
-> TODO: description
+# Installation
+
+```bash
+
+  $ npm install @interads/ui styled-components tinycolor2
+
+```
 
 ## Usage
 
 ```javascript
+
 import { Button } from '@interads/ui'
 
 export const Home: React.FC = function Home(props: HomeProps) {
