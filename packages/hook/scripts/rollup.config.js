@@ -1,38 +1,37 @@
-import { existsSync } from 'fs';
+import { existsSync } from 'fs'
 import path from 'path'
 import nodeResolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import babel from '@rollup/plugin-babel'
 import nodeGlobals from 'rollup-plugin-node-globals'
 import nodePolyfill from 'rollup-plugin-polyfill-node'
-import replace from '@rollup/plugin-replace';
-
+import replace from '@rollup/plugin-replace'
 
 function resolveNestedImport(packageFolder, importee) {
-  const folder = importee.split('/')[2];
+  const folder = importee.split('/')[2]
   const resolvedFilename = path.resolve(
     __dirname,
     `../../../packages/${packageFolder}/src/${folder}/index`,
-  );
+  )
 
-  const resolvedTs = `${resolvedFilename}.ts`;
+  const resolvedTs = `${resolvedFilename}.ts`
 
   if (existsSync(resolvedTs)) {
-    return resolvedTs;
+    return resolvedTs
   }
 
-  return `${resolvedFilename}.js`;
+  return `${resolvedFilename}.js`
 }
 
 const nestedFolder = {
   resolveId: (importee) => {
-    if (importee.indexOf('@mui/util/') === 0) {
-      return resolveNestedImport('util', importee);
+    if (importee.indexOf('@interads/util/') === 0) {
+      return resolveNestedImport('util', importee)
     }
 
-    return undefined;
+    return undefined
   },
-};
+}
 
 const input = './src/index.ts'
 const globals = {
@@ -66,12 +65,11 @@ function onwarn(warning) {
     // React.useDebug not fully dce'd from prod bundle
     // in the sense that it's still imported but unused. Downgrading
     // it to a warning as a reminder to fix at some point
-    console.warn(warning.message);
+    console.warn(warning.message)
   } else {
-    throw Error(warning.message);
+    throw Error(warning.message)
   }
 }
-
 
 export default [
   {

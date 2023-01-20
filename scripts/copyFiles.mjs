@@ -17,7 +17,6 @@ async function includeFileInBuild(file) {
 /**
  * Puts a package.json into every immediate child directory of rootDir.
  * That package.json contains information about esm for bundlers so that imports
- * like import Typography from '@mui/material/Typography' are tree-shakeable.
  *
  * It also tests that an this import can be used in TypeScript by checking
  * if an index.d.ts is present at that path.

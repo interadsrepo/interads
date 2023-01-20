@@ -62,7 +62,6 @@ async function main() {
       // First and last character are quotes.
       // TypeScript mixes single and double quotes.
       const importPath = importTypeMatch[1].slice(1, -1);
-      // In filesystem semantics `@mui/material` is a relative path.
       // But when resolving imports these specifiers are considered "bare specifiers" and work differently.
       // We're only interested in imports that are considered "relative path imports".
       const isBareImportSpecifier = !importPath.startsWith('.');

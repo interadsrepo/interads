@@ -1,24 +1,29 @@
 {
   "name": "@interads/interads",
-  "version": "0.0.0",
+  "version": "0.13.0",
   "private": true,
   "description": "",
   "main": "index.js",
   "scripts": {
+    "release:changelog": "node scripts/releaseChangelog.mjs",
+    "release:version": "lerna version --no-changelog --no-push --no-git-tag-version",
+    "release:build": "lerna run --parallel --scope \"@interads/*\" build",
+    "release:publish": "lerna publish from-package --dist-tag latest --contents lib",
+    "release:tag": "node scripts/releaseTag.mjs",
     "test": "lerna run test",
     "build": "lerna run --parallel --scope \"@interads/*\" build",
     "build-types": "lerna run --parallel --scope \"@interads/*\" build:types",
     "prepublish": "pnpm run build",
     "lint": "eslint . --cache --report-unused-disable-directives --ext .js,.ts,.tsx --max-warnings 0",
     "publish": "cross-env HUSKY=0 lerna publish --no-private",
-    "release": "pnpm run version && pnpm run publish",
     "prepare": "husky install"
   },
   "keywords": [],
   "author": "Ilfat Izzat Pratama",
   "license": "MIT",
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "examples/*"
   ],
   "devDependencies": {
     "@babel/cli": "^7.20.7",
@@ -37,6 +42,7 @@
     "@commitlint/cli": "17.4.2",
     "@commitlint/config-conventional": "17.4.2",
     "@commitlint/config-lerna-scopes": "17.4.2",
+    "@octokit/rest": "^19.0.5",
     "@rollup/plugin-babel": "^6.0.3",
     "@rollup/plugin-commonjs": "^24.0.0",
     "@rollup/plugin-node-resolve": "^15.0.1",
@@ -78,6 +84,7 @@
     "lerna": "^6.4.1",
     "lint-staged": "13.1.0",
     "prettier": "^2.8.2",
+    "process": "^0.11.10",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-is": "^18.2.0",
