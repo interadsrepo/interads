@@ -9,7 +9,7 @@ function getPairs(obj: Record<string, unknown>, keys: unknown[] = []) {
   }, [])
 }
 
-export function uriEncode(obj: Record<string, unknown>) {
+function uriEncode(obj: Record<string, unknown>) {
   const encodedUri = getPairs(obj)
     .map(
       ([[key0, ...keysRest], value]: any) =>

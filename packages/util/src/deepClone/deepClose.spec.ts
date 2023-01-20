@@ -1,4 +1,4 @@
-import { deepClone } from './deepClone'
+import deepClone from './deepClone'
 
 describe('deepClose function', () => {
   it('should deep clone', () => {
