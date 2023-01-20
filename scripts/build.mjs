@@ -10,23 +10,23 @@ const exec = promisify(childProcess.exec)
 const validBundles = ['node', 'stable']
 
 async function run(argv) {
-  const { bundle, largeFiles, outDir: relativeOutDir, verbose } = argv;
+  const { bundle, largeFiles, outDir: relativeOutDir, verbose } = argv
 
   if (validBundles.indexOf(bundle) === -1) {
     throw new TypeError(
       `Unrecognized bundle '${bundle}'. Did you mean one of "${validBundles.join('", "')}"?`,
-    );
+    )
   }
 
   const env = {
     NODE_ENV: 'production',
     BABEL_ENV: bundle,
     IA_VERBOSE: verbose,
-  };
+  }
 
-  const babelConfigPath = path.resolve(getWorkspaceRoot(), 'babel.config.js');
-  const srcDir = path.resolve('./src');
-  const extensions = ['.js', '.ts', '.tsx'];
+  const babelConfigPath = path.resolve(getWorkspaceRoot(), 'babel.config.js')
+  const srcDir = path.resolve('./src')
+  const extensions = ['.js', '.ts', '.tsx']
   const ignore = [
     '**/*.test.js',
     '**/*.test.ts',
@@ -34,14 +34,14 @@ async function run(argv) {
     '**/*.spec.ts',
     '**/*.spec.tsx',
     '**/*.d.ts',
-  ];
+  ]
 
   const topLevelNonIndexFiles = glob
     .sync(`*{${extensions.join(',')}}`, { cwd: srcDir, ignore })
     .filter((file) => {
-      return path.basename(file, path.extname(file)) !== 'index';
-    });
-  const topLevelPathImportsCanBePackages = topLevelNonIndexFiles.length === 0;
+      return path.basename(file, path.extname(file)) !== 'index'
+    })
+  const topLevelPathImportsCanBePackages = topLevelNonIndexFiles.length === 0
 
   const outDir = path.resolve(
     relativeOutDir,
@@ -49,7 +49,7 @@ async function run(argv) {
       node: topLevelPathImportsCanBePackages ? './node' : './',
       stable: topLevelPathImportsCanBePackages ? './' : './esm',
     }[bundle],
-  );
+  )
 
   const babelArgs = [
     '--config-file',
@@ -62,27 +62,27 @@ async function run(argv) {
     '--ignore',
     // Need to put these patterns in quotes otherwise they might be evaluated by the used terminal.
     `"${ignore.join('","')}"`,
-  ];
+  ]
 
   if (largeFiles) {
-    babelArgs.push('--compact false');
+    babelArgs.push('--compact false')
   }
 
-  const command = ['pnpm babel', ...babelArgs].join(' ');
+  const command = ['pnpm babel', ...babelArgs].join(' ')
 
   if (verbose) {
     // eslint-disable-next-line no-console
-    console.log(`running '${command}' with ${JSON.stringify(env)}`);
+    console.log(`running '${command}' with ${JSON.stringify(env)}`)
   }
 
-  const { stderr, stdout } = await exec(command, { env: { ...process.env, ...env } });
+  const { stderr, stdout } = await exec(command, { env: { ...process.env, ...env } })
   if (stderr) {
-    throw new Error(`'${command}' failed with \n${stderr}`);
+    throw new Error(`'${command}' failed with \n${stderr}`)
   }
 
   if (verbose) {
     // eslint-disable-next-line no-console
-    console.log(stdout);
+    console.log(stdout)
   }
 }
 
@@ -93,8 +93,8 @@ yargs(process.argv.slice(2))
     builder: (command) => {
       return command
         .positional('bundle', {
-          description: `Valid bundle: ${validBundles.join("\" | \"")}`,
-          type: 'string'
+          description: `Valid bundle: ${validBundles.join('" | "')}`,
+          type: 'string',
         })
         .option('largeFiles', {
           type: 'boolean',
@@ -102,11 +102,11 @@ yargs(process.argv.slice(2))
           describe: 'Set to `true` if you know you are transpiling large files.',
         })
         .option('out-dir', { default: './lib', type: 'string' })
-        .option('verbose', { type: 'boolean' });
+        .option('verbose', { type: 'boolean' })
     },
-    handler: run
+    handler: run,
   })
   .help()
   .strict(true)
   .version(false)
-  .parse();
+  .parse()

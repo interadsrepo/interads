@@ -1,4 +1,4 @@
-import path from "path";
+import path from 'path'
 import url from 'url'
 
 // eslint-disable-next-line import/prefer-default-export

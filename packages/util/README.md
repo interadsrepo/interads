@@ -7,7 +7,6 @@
 CommonJS
 
 ```javascript
-
 const { uriEncode } = require('@interads/util')
 
 const obj = {
@@ -15,20 +14,17 @@ const obj = {
   pageSize: 10,
   filter: {
     user: {
-      name: 'john'
-    }
-  }
+      name: 'john',
+    },
+  },
 }
 
 const encodedParams = uriEncode(obj)
-
-
 ```
 
 CommonJS
 
 ```javascript
-
 import { uriEncode } from '@interads/util'
 
 const obj = {
@@ -36,12 +32,10 @@ const obj = {
   pageSize: 10,
   filter: {
     user: {
-      name: 'john'
-    }
-  }
+      name: 'john',
+    },
+  },
 }
 
 const encodedParams = uriEncode(obj)
-
-
 ```

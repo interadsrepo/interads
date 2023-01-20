@@ -1,23 +1,22 @@
 /* eslint-disable no-console */
-import path from 'path';
-import fse from 'fs-extra';
-import glob from 'fast-glob';
+import path from 'path'
+import fse from 'fs-extra'
+import glob from 'fast-glob'
 
-const packagePath = process.cwd();
-const buildPath = path.join(packagePath, './lib');
-const srcPath = path.join(packagePath, './src');
+const packagePath = process.cwd()
+const buildPath = path.join(packagePath, './lib')
+const srcPath = path.join(packagePath, './src')
 
 async function includeFileInBuild(file) {
-  const sourcePath = path.resolve(packagePath, file);
-  const targetPath = path.resolve(buildPath, path.basename(file));
-  await fse.copy(sourcePath, targetPath);
-  console.log(`Copied ${sourcePath} to ${targetPath}`);
+  const sourcePath = path.resolve(packagePath, file)
+  const targetPath = path.resolve(buildPath, path.basename(file))
+  await fse.copy(sourcePath, targetPath)
+  console.log(`Copied ${sourcePath} to ${targetPath}`)
 }
 
 /**
  * Puts a package.json into every immediate child directory of rootDir.
  * That package.json contains information about esm for bundlers so that imports
- * like import Typography from '@mui/material/Typography' are tree-shakeable.
  *
  * It also tests that an this import can be used in TypeScript by checking
  * if an index.d.ts is present at that path.
@@ -26,14 +25,14 @@ async function includeFileInBuild(file) {
  * @param {string} param0.to
  */
 async function createModulePackages({ from, to }) {
-  const directoryPackages = glob.sync('*/index.{js,ts,tsx}', { cwd: from }).map(path.dirname);
+  const directoryPackages = glob.sync('*/index.{js,ts,tsx}', { cwd: from }).map(path.dirname)
 
   await Promise.all(
     directoryPackages.map(async (directoryPackage) => {
-      const packageJsonPath = path.join(to, directoryPackage, 'package.json');
+      const packageJsonPath = path.join(to, directoryPackage, 'package.json')
       const topLevelPathImportsAreCommonJSModules = await fse.pathExists(
         path.resolve(path.dirname(packageJsonPath), '../esm'),
-      );
+      )
 
       const packageJson = {
         sideEffects: false,
@@ -44,50 +43,49 @@ async function createModulePackages({ from, to }) {
           ? './index.js'
           : path.posix.join('../node', directoryPackage, 'index.js'),
         types: './index.d.ts',
-      };
+      }
 
       const [typingsEntryExist, moduleEntryExists, mainEntryExists] = await Promise.all([
         fse.pathExists(path.resolve(path.dirname(packageJsonPath), packageJson.types)),
         fse.pathExists(path.resolve(path.dirname(packageJsonPath), packageJson.module)),
         fse.pathExists(path.resolve(path.dirname(packageJsonPath), packageJson.main)),
         fse.writeFile(packageJsonPath, JSON.stringify(packageJson, null, 2)),
-      ]);
+      ])
 
-      const manifestErrorMessages = [];
+      const manifestErrorMessages = []
       if (!typingsEntryExist) {
-        manifestErrorMessages.push(`'types' entry '${packageJson.types}' does not exist`);
+        manifestErrorMessages.push(`'types' entry '${packageJson.types}' does not exist`)
       }
       if (!moduleEntryExists) {
-        manifestErrorMessages.push(`'module' entry '${packageJson.module}' does not exist`);
+        manifestErrorMessages.push(`'module' entry '${packageJson.module}' does not exist`)
       }
       if (!mainEntryExists) {
-        manifestErrorMessages.push(`'main' entry '${packageJson.main}' does not exist`);
+        manifestErrorMessages.push(`'main' entry '${packageJson.main}' does not exist`)
       }
       if (manifestErrorMessages.length > 0) {
         // TODO: AggregateError
-        throw new Error(`${packageJsonPath}:\n${manifestErrorMessages.join('\n')}`);
+        throw new Error(`${packageJsonPath}:\n${manifestErrorMessages.join('\n')}`)
       }
 
-      return packageJsonPath;
+      return packageJsonPath
     }),
-  );
+  )
 }
 
 async function typescriptCopy({ from, to }) {
   if (!(await fse.pathExists(to))) {
-    console.warn(`path ${to} does not exists`);
-    return [];
+    console.warn(`path ${to} does not exists`)
+    return []
   }
 
-  const files = await glob('**/*.d.ts', { cwd: from });
-  const cmds = files.map((file) => fse.copy(path.resolve(from, file), path.resolve(to, file)));
-  return Promise.all(cmds);
+  const files = await glob('**/*.d.ts', { cwd: from })
+  const cmds = files.map((file) => fse.copy(path.resolve(from, file), path.resolve(to, file)))
+  return Promise.all(cmds)
 }
 
 async function createPackageFile() {
-  const packageData = await fse.readFile(path.resolve(packagePath, './package.json'), 'utf8');
-  const { nyc, scripts, devDependencies, workspaces, ...packageDataOther } =
-    JSON.parse(packageData);
+  const packageData = await fse.readFile(path.resolve(packagePath, './package.json'), 'utf8')
+  const { nyc, scripts, devDependencies, workspaces, ...packageDataOther } = JSON.parse(packageData)
 
   const newPackageData = {
     ...packageDataOther,
@@ -102,24 +100,24 @@ async function createPackageFile() {
             : './index.js',
         }
       : {}),
-  };
-
-  const typeDefinitionsFilePath = path.resolve(buildPath, './index.d.ts');
-  if (await fse.pathExists(typeDefinitionsFilePath)) {
-    newPackageData.types = './index.d.ts';
   }
 
-  const targetPath = path.resolve(buildPath, './package.json');
+  const typeDefinitionsFilePath = path.resolve(buildPath, './index.d.ts')
+  if (await fse.pathExists(typeDefinitionsFilePath)) {
+    newPackageData.types = './index.d.ts'
+  }
 
-  await fse.writeFile(targetPath, JSON.stringify(newPackageData, null, 2), 'utf8');
-  console.log(`Created package.json in ${targetPath}`);
+  const targetPath = path.resolve(buildPath, './package.json')
 
-  return newPackageData;
+  await fse.writeFile(targetPath, JSON.stringify(newPackageData, null, 2), 'utf8')
+  console.log(`Created package.json in ${targetPath}`)
+
+  return newPackageData
 }
 
 async function prepend(file, string) {
-  const data = await fse.readFile(file, 'utf8');
-  await fse.writeFile(file, string + data, 'utf8');
+  const data = await fse.readFile(file, 'utf8')
+  await fse.writeFile(file, string + data, 'utf8')
 }
 
 async function addLicense(packageData) {
@@ -130,32 +128,28 @@ async function addLicense(packageData) {
  * This source code is licensed under the ${packageData.license} license found in the
  * LICENSE file in the root directory of this source tree.
  */
-`;
+`
   await Promise.all(
-    [
-      './index.js',
-      './node/index.js',
-      './umd/index.js',
-    ].map(async (file) => {
+    ['./index.js', './node/index.js', './umd/index.js'].map(async (file) => {
       try {
-        await prepend(path.resolve(buildPath, file), license);
+        await prepend(path.resolve(buildPath, file), license)
       } catch (err) {
         if (err.code === 'ENOENT') {
-          console.log(`Skipped license for ${file}`);
+          console.log(`Skipped license for ${file}`)
         } else {
-          throw err;
+          throw err
         }
       }
     }),
-  );
+  )
 }
 
 async function run() {
   try {
     // TypeScript
-    await typescriptCopy({ from: srcPath, to: buildPath });
+    await typescriptCopy({ from: srcPath, to: buildPath })
 
-    const packageData = await createPackageFile();
+    const packageData = await createPackageFile()
 
     await Promise.all(
       [
@@ -164,15 +158,15 @@ async function run() {
         '../../CHANGELOG.md',
         '../../LICENSE',
       ].map((file) => includeFileInBuild(file)),
-    );
+    )
 
-    await addLicense(packageData);
+    await addLicense(packageData)
 
-    await createModulePackages({ from: srcPath, to: buildPath });
+    await createModulePackages({ from: srcPath, to: buildPath })
   } catch (err) {
-    console.error(err);
-    process.exit(1);
+    console.error(err)
+    process.exit(1)
   }
 }
 
-run();
+run()
