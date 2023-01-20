@@ -5,11 +5,16 @@
   "author": "pratamaizzat <pratama.izzat231298@gmail.com>",
   "homepage": "",
   "license": "MIT",
+  "main": "./src/index.ts",
   "scripts": {
-    "prebuild": "rimraf lib",
-    "build": "pnpm run build:node && pnpm run build:stable",
+    "type-check": "tsc --noEmit",
+    "prebuild": "rimraf lib tsconfig.build.tsbuildinfo && pnpm run type-check",
+    "build": "pnpm run build:node && pnpm run build:stable && pnpm run build:umd && pnpm run build:types && pnpm run build:copy-files",
+    "build:types": "node ../../scripts/buildTypes.mjs",
     "build:node": "node ../../scripts/build.mjs node",
-    "build:stable": "node ../../scripts/build.mjs stable"
+    "build:stable": "node ../../scripts/build.mjs stable",
+    "build:copy-files": "node ../../scripts/copyFiles.mjs",
+    "build:umd": "cross-env BABEL_ENV=stable rollup -c scripts/rollup.config.js"
   },
   "dependencies": {
     "@babel/runtime": "7.20.7"
@@ -20,6 +25,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
+  "sideEffects": false,
   "peerDependenciesMeta": {
     "@types/react": {
       "optional": true
@@ -27,5 +33,9 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "engines": {
+    "node": ">=14.6.0"
+  },
+  "packageManager": "pnpm@7.24.3"
 }

@@ -1,3 +1,5 @@
+export interface UseInfiniteScroll {}
+
 function useInfiniteScroll() {
   return 'useInfiniteScroll'
 }
