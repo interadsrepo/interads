@@ -1,8 +1,8 @@
-type RecursivePartial<T> = {
-  [P in keyof T]?: RecursivePartial<T[P]>
+export type DeepPartial<T> = {
+  [P in keyof T]?: DeepPartial<T[P]>
 }
 
-type GetObjDifferentKeys<
+export type GetObjDifferentKeys<
   T,
   U,
   T0 = Omit<T, keyof U> & Omit<U, keyof T>,
@@ -11,9 +11,9 @@ type GetObjDifferentKeys<
   },
 > = T1
 
-type GetObjSameKeys<T, U> = Omit<T | U, keyof GetObjDifferentKeys<T, U>>
+export type GetObjSameKeys<T, U> = Omit<T | U, keyof GetObjDifferentKeys<T, U>>
 
-type MergeTwoObjects<
+export type MergeTwoObjects<
   T,
   U,
   T0 = Partial<GetObjDifferentKeys<T, U>> & {
@@ -22,7 +22,7 @@ type MergeTwoObjects<
   T1 = { [K in keyof T0]: T0[K] },
 > = T1
 
-type DeepMergeTwoTypes<T, U> = [T, U] extends [
+export type DeepMergeTwoTypes<T, U> = [T, U] extends [
   { [key: string]: unknown },
   { [key: string]: unknown },
 ]
@@ -37,10 +37,10 @@ function isMergebleObject(item: unknown): boolean {
   return isObject(item) && !Array.isArray(item)
 }
 
-export function mergeDeep<T extends Record<string, unknown>>(
+function mergeDeep<T extends Record<string, unknown>>(
   target: T,
-  ...sources: RecursivePartial<T>[]
-): DeepMergeTwoTypes<T, RecursivePartial<T>> {
+  ...sources: DeepPartial<T>[]
+): DeepMergeTwoTypes<T, DeepPartial<T>> {
   if (!sources.length) {
     return target
   }
@@ -56,9 +56,9 @@ export function mergeDeep<T extends Record<string, unknown>>(
         if (!target[key]) {
           ;(target[key] as T) = {} as T
         }
-        mergeDeep(target[key] as T, source[key] as RecursivePartial<T>)
+        mergeDeep(target[key] as T, source[key] as DeepPartial<T>)
       } else {
-        ;(target[key] as RecursivePartial<T>) = source[key] as RecursivePartial<T>
+        ;(target[key] as DeepPartial<T>) = source[key] as DeepPartial<T>
       }
     })
   }

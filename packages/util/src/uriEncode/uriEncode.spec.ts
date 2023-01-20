@@ -1,4 +1,4 @@
-import { uriEncode } from './uriEncode'
+import uriEncode from './uriEncode'
 
 describe('uriEncode unit test', () => {
   const dataTest = {

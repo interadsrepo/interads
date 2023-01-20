@@ -5,30 +5,18 @@
   "author": "pratamaizzat <pratama.izzat231298@gmail.com>",
   "homepage": "",
   "license": "MIT",
-  "main": "lib/index.cjs.js",
-  "module": "lib/index.esm.js",
-  "types": "lib/src/index.d.ts",
-  "exports": {
-    ".": {
-      "import": "./lib/index.esm.js",
-      "require": "./lib/index.cjs.js"
-    }
-  },
-  "directories": {
-    "lib": "lib"
-  },
-  "files": [
-    "lib"
-  ],
+  "main": "./src/index.ts",
   "scripts": {
     "type-check": "tsc --noEmit",
     "prebuild": "rimraf lib tsconfig.build.tsbuildinfo && pnpm run type-check",
-    "build": "pnpm run build:types && pnpm run build:js",
-    "build:types": "tsc --project tsconfig.build.json",
-    "build:js": "cross-env BABEL_ENV=stable rollup -c scripts/rollup.config.js",
-    "test": "jest --maxWorkers=1"
+    "build": "pnpm run build:node && pnpm run build:stable && pnpm run build:umd && pnpm run build:types && pnpm run build:copy-files",
+    "build:types": "node ../../scripts/buildTypes.mjs",
+    "build:node": "node ../../scripts/build.mjs node",
+    "build:stable": "node ../../scripts/build.mjs stable",
+    "build:copy-files": "node ../../scripts/copyFiles.mjs",
+    "build:umd": "cross-env BABEL_ENV=stable rollup -c scripts/rollup.config.js"
   },
-  "peerDependenciesMeta": {},
+  "sideEffects": false,
   "jest": {
     "moduleFileExtensions": [
       "js",
@@ -52,7 +40,11 @@
   "publishConfig": {
     "access": "public"
   },
+  "engines": {
+    "node": ">=14.6.0"
+  },
   "dependencies": {
     "@babel/runtime": "7.20.7"
-  }
+  },
+  "packageManager": "pnpm@7.24.3"
 }

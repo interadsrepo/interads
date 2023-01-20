@@ -95,10 +95,10 @@
   },
   "resolutions": {},
   "lint-staged": {
-    "*.{css, less, scss, html, json, jsx, js, tsx, ts}": [
+    "*.{css,less,scss,html,json,jsx,js,tsx,ts}": [
       "prettier --write ."
     ],
-    "*.{js, jsx, ts, tsx}": [
+    "*.{js,jsx,ts,tsx}": [
       "eslint . --cache --report-unused-disable-directives --ext .js,.ts,.tsx --max-warnings 0"
     ]
   },

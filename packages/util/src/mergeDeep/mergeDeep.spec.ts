@@ -1,4 +1,4 @@
-import { mergeDeep } from './mergeDeep'
+import mergeDeep from './mergeDeep'
 
 describe('mergeDeep function', () => {
   it('should deep clone', () => {
