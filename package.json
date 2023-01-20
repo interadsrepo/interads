@@ -1,6 +1,6 @@
 {
   "name": "@interads/interads",
-  "version": "0.10.0",
+  "version": "0.12.1",
   "private": true,
   "description": "",
   "main": "index.js",

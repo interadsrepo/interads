@@ -14,7 +14,8 @@
     "build:node": "node ../../scripts/build.mjs node",
     "build:stable": "node ../../scripts/build.mjs stable",
     "build:copy-files": "node ../../scripts/copyFiles.mjs",
-    "build:umd": "cross-env BABEL_ENV=stable rollup -c scripts/rollup.config.js"
+    "build:umd": "cross-env BABEL_ENV=stable rollup -c scripts/rollup.config.js",
+    "release": "pnpm run build && npm publish lib"
   },
   "sideEffects": false,
   "jest": {
@@ -46,5 +47,6 @@
   "dependencies": {
     "@babel/runtime": "7.20.7"
   },
-  "packageManager": "pnpm@7.24.3"
+  "packageManager": "pnpm@7.24.3",
+  "gitHead": "45f2be7afd454956d62c57c47d9b162ba566f8b6"
 }
