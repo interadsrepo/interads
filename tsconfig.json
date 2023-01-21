@@ -14,11 +14,13 @@
     "noErrorTruncation": false,
     "allowJs": true,
     "paths": {
-      "@interads/ui": ["packages/ui/src/index.ts"],
-      "@interads/util": ["packages/util/src/*"]
+      "@interads/ui": ["./packages/ui/src"],
+      "@interads/ui/*": ["./packages/ui/src/*"],
+      "@interads/util": ["./packages/util/src"],
+      "@interads/util/*": ["./packages/util/src/*"]
     },
     // Otherwise we get react-native typings which conflict with dom.lib.
     "types": ["node", "react", "react-is/next"]
   },
-  "exclude": ["**/.*/", "**/build", "**/node_modules", "docs/export"]
+  "exclude": ["**/.*/", "**/lib", "**/node_modules", "docs/export"]
 }

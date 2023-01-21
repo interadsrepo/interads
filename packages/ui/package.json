@@ -52,7 +52,7 @@
   },
   "dependencies": {
     "@babel/runtime": "7.20.7",
-    "@interads/util": "^0.12.1",
+    "@interads/util": "0.12.1",
     "react-is": "^18.2.0"
   },
   "engines": {
