@@ -1,36 +1,39 @@
 import * as React from 'react'
 import Head from 'next/head'
-import {
-  Box,
-  Button,
-  Grid,
-  GridItem,
-  IconButton,
-  Input,
-  InputField,
-  TextView,
-  Tooltip,
-  useAlert,
-  Modal,
-  ModalBody,
-  ModalFoot,
-  ModalHead,
-  Pagination,
-} from '@interads/ui'
+import Box from '@interads/ui/Box'
+import Button from '@interads/ui/Button'
+import Grid, { GridItem } from '@interads/ui/Grid'
+import IconButton from '@interads/ui/IconButton'
+import Input from '@interads/ui/Input'
+import InputField from '@interads/ui/InputField'
+import TextView from '@interads/ui/TextView'
+import Tooltip from '@interads/ui/Tooltip'
+import Modal, { ModalBody, ModalFoot, ModalHead } from '@interads/ui/Modal'
+import { useAlert } from '@interads/ui/hook'
+import { WLTPagination } from '@interads/ui/Private'
+import { CheckBox } from '@interads/ui'
 
 import { MagnifyingGlass, Question, UserCircle } from 'phosphor-react'
 
 export default function Home() {
+  const checkRef = React.useRef<null | HTMLInputElement>(null)
   const alert = useAlert()
+  const [{ page, total, perPage }, setPaginate] = React.useState<{
+    page: number
+    perPage: number
+    total: number
+  }>({
+    page: 1,
+    perPage: 10,
+    total: 100,
+  })
 
   const openAlert = (variant: 'success' | 'error' | 'warning') => {
     alert({
       title: 'Alert!',
       message: 'Message of alert here!!!',
       variant,
-    })
-      .then(() => {})
-      .catch(() => {})
+    }).then(() => {})
   }
   const [modal, setModal] = React.useState<string | null>(null)
   const [modalInside, setModalInside] = React.useState<boolean>(false)
@@ -44,7 +47,9 @@ export default function Home() {
       </Head>
       <main>
         <h1>Demo</h1>
-
+        <CheckBox ref={checkRef} />
+        <CheckBox disabled palette="primary" id="test" ref={checkRef} />
+        <CheckBox disabled palette="info" ref={checkRef} />
         <Box padding="1rem" fullWidth>
           <Box>
             <TextView>Hello this is me</TextView>
@@ -229,8 +234,32 @@ export default function Home() {
               </Button>
             </GridItem>
           </Grid>
-          <Pagination page={1} perPage={10} onChangePage={() => {}} />
+          <WLTPagination
+            page={page}
+            perPage={perPage}
+            total={total}
+            onChangePage={(curr) => {
+              setPaginate((prev) => ({
+                ...prev,
+                page: curr,
+              }))
+            }}
+          />
+
+          <WLTPagination
+            page={page}
+            perPage={perPage}
+            total={total}
+            palette="info"
+            onChangePage={(curr) => {
+              setPaginate((prev) => ({
+                ...prev,
+                page: curr,
+              }))
+            }}
+          />
         </Box>
+
         <Modal open={modal === 'body'} round onClose={() => setModal(null)}>
           <ModalHead>Modal Scroll Head</ModalHead>
           <ModalBody>
