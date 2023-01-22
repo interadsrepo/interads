@@ -12,7 +12,6 @@ A big thanks to the 1 contributors who made this release possible. Here are some
 
 All contributors of this release in alphabetical order: @pratamaizzat
 
-
 ## 0.10.0
 
 <!-- generated comparing v0.10.0..main -->
