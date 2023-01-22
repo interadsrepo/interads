@@ -30,3 +30,8 @@ export * from './Modal'
 
 export { default as Pagination } from './Pagination'
 export * from './Pagination'
+
+export * from './Private'
+
+export { default as CheckBox } from './CheckBox'
+export * from './CheckBox'

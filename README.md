@@ -27,6 +27,10 @@ Component List:
   - [x] Theming
 - [x] Modal
   - [x] Theming
+- [x] WLTPagination
+  - [x] Theming
+- [x] CheckBox
+  - [ ] Theming
 
 ## @interads/utils
 

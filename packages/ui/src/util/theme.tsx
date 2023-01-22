@@ -135,6 +135,18 @@ export interface Theme {
       }
     }
   }>
+  wltPagination?: Partial<{
+    root: CSSObject
+    icon: {
+      icon?: CSSObject
+      button?: CSSObject
+    }
+    disabled: CSSObject
+    label: CSSObject
+    palette: {
+      [T in keyof PaletteTheme]: CSSObject
+    }
+  }>
 }
 
 export const defaultTheme: Theme = {

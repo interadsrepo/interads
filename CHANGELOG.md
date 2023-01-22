@@ -1,5 +1,17 @@
 # [Versions](https://interads.co.id)
 
+## 0.12.1
+
+<!-- generated comparing v0.12.1..main -->
+
+_Jan 23, 2023_
+
+A big thanks to the 1 contributors who made this release possible. Here are some highlights:
+
+- &#8203;<!-- 1 -->chore(root): update @pratamaizzat
+
+All contributors of this release in alphabetical order: @pratamaizzat
+
 ## 0.10.0
 
 <!-- generated comparing v0.10.0..main -->
