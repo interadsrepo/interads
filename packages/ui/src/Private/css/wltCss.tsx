@@ -48,7 +48,7 @@ const IAWLTPagination = styled('div')<IAWLTPaginationProps>`
 
     &.IAWTLPagination-palette {
       &primary {
-        stroke: ${({ theme }) => theme.palette.primary};
+        stroke: ${({ theme }) => theme.palette?.primary};
         background: ${defaultColor.bg};
         &:active {
           filter: brightness(110%);
@@ -62,7 +62,7 @@ const IAWLTPagination = styled('div')<IAWLTPaginationProps>`
         }}
       }
       &secondary {
-        stroke: ${({ theme }) => theme.palette.secondary};
+        stroke: ${({ theme }) => theme.palette?.secondary};
         background: ${defaultColor.bg};
         &:active {
           filter: brightness(110%);
@@ -76,7 +76,7 @@ const IAWLTPagination = styled('div')<IAWLTPaginationProps>`
         }}
       }
       &success {
-        stroke: ${({ theme }) => theme.palette.success};
+        stroke: ${({ theme }) => theme.palette?.success};
         background: ${defaultColor.bg};
         &:active {
           filter: brightness(110%);
@@ -90,7 +90,7 @@ const IAWLTPagination = styled('div')<IAWLTPaginationProps>`
         }}
       }
       &error {
-        stroke: ${({ theme }) => theme.palette.error};
+        stroke: ${({ theme }) => theme.palette?.error};
         background: ${defaultColor.bg};
         &:active {
           filter: brightness(110%);
@@ -104,7 +104,7 @@ const IAWLTPagination = styled('div')<IAWLTPaginationProps>`
         }}
       }
       &info {
-        stroke: ${({ theme }) => theme.palette.info};
+        stroke: ${({ theme }) => theme.palette?.info};
         background: ${defaultColor.bg};
         &:active {
           filter: brightness(110%);
@@ -118,7 +118,7 @@ const IAWLTPagination = styled('div')<IAWLTPaginationProps>`
         }}
       }
       &warning {
-        stroke: ${({ theme }) => theme.palette.warning};
+        stroke: ${({ theme }) => theme.palette?.warning};
         background: ${defaultColor.bg};
         &:active {
           filter: brightness(110%);
@@ -171,7 +171,7 @@ const IAWLTPagination = styled('div')<IAWLTPaginationProps>`
     text-transform: uppercase;
     font-weight: 400;
     padding-inline: 0.5rem;
-    color: ${({ theme }) => theme.palette.primary};
+    color: ${({ theme }) => theme.palette?.primary};
 
     span {
       font-weight: 600;

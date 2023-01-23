@@ -20,14 +20,14 @@ const IACheckBox = styled('div')<IACheckBoxProps>`
     cursor: inherit;
     width: 100%;
     height: 100%;
-    background-color: ${({ theme, palette }) => theme.palette[palette]};
+    background-color: ${({ theme, palette }) => theme.palette?.[palette]};
   }
 
   input {
     position: relative;
     border-width: var(--border);
     border-style: solid;
-    border-color: ${({ theme, palette }) => theme.palette[palette]};
+    border-color: ${({ theme, palette }) => theme.palette?.[palette]};
     border-radius: var(--border-radius);
     -webkit-appearance: none;
     appearance: none;
@@ -39,16 +39,6 @@ const IACheckBox = styled('div')<IACheckBoxProps>`
     display: grid;
     place-content: center;
     outline: none;
-    &.${checkBoxClasses.disabled} {
-      /* cursor: not-allowed;
-      border-color: ${({ theme }) => theme.color.gray[400]};
-      &::before {
-        background-color: ${({ theme }) => theme.color.gray[200]};
-      }
-      &:checked::after {
-        background-color: ${({ theme }) => theme.color.gray[400]};
-      } */
-    }
 
     &::before {
       position: absolute;
@@ -60,7 +50,7 @@ const IACheckBox = styled('div')<IACheckBoxProps>`
       transform-origin: bottom left;
       transition: 120ms transform ease-in-out;
       background-color: ${({ theme, palette }) =>
-        tinycolor(theme.palette[palette]).lighten(90).toString()};
+        tinycolor(theme.palette?.[palette]).lighten(90).toString()};
       outline: none;
     }
     &::after {
@@ -76,7 +66,7 @@ const IACheckBox = styled('div')<IACheckBoxProps>`
     }
 
     &:checked::after {
-      background-color: ${({ theme, palette }) => theme.palette[palette]};
+      background-color: ${({ theme, palette }) => theme.palette?.[palette]};
     }
   }
 
@@ -86,12 +76,12 @@ const IACheckBox = styled('div')<IACheckBoxProps>`
     cursor: not-allowed;
     input {
       cursor: inherit;
-      border-color: ${({ theme }) => theme.color.gray[400]};
+      border-color: ${({ theme }) => theme.color?.gray[400]};
       &::before {
-        background-color: ${({ theme }) => theme.color.gray[200]};
+        background-color: ${({ theme }) => theme.color?.gray[200]};
       }
       &:checked::after {
-        background-color: ${({ theme }) => theme.color.gray[400]};
+        background-color: ${({ theme }) => theme.color?.gray[400]};
       }
     }
   }
