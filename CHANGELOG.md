@@ -8,7 +8,7 @@ _Jan 23, 2023_
 
 A big thanks to the 1 contributors who made this release possible. Here are some highlights:
 
-- &#8203;<!-- 1 -->chore(root): update @pratamaizzat
+- &#8203;<!-- 04 -->feat(ui): new component added @pratamaizzat
 
 All contributors of this release in alphabetical order: @pratamaizzat
 
