@@ -1,6 +1,6 @@
 {
   "name": "@interads/interads",
-  "version": "0.14.0",
+  "version": "0.15.0",
   "private": true,
   "description": "",
   "main": "index.js",
@@ -15,7 +15,6 @@
     "build-types": "lerna run --parallel --scope \"@interads/*\" build:types",
     "prepublish": "pnpm run build",
     "lint": "eslint . --cache --report-unused-disable-directives --ext .js,.ts,.tsx --max-warnings 0",
-    "publish": "cross-env HUSKY=0 lerna publish --no-private",
     "start": "pnpm --filter next-demo-ui run dev",
     "prepare": "husky install"
   },
@@ -50,6 +49,7 @@
     "@rollup/plugin-node-resolve": "^15.0.1",
     "@rollup/plugin-replace": "^5.0.2",
     "@rollup/plugin-terser": "^0.3.0",
+    "@testing-library/react": "^13.4.0",
     "@types/jest": "29.2.5",
     "@types/node": "^18.11.18",
     "@types/react": "^18.0.26",
@@ -83,6 +83,7 @@
     "fs-extra": "^11.1.0",
     "husky": "^8.0.0",
     "jest": "29.3.1",
+    "jest-environment-jsdom": "^29.3.1",
     "lerna": "^6.4.1",
     "lint-staged": "13.1.0",
     "prettier": "^2.8.2",

@@ -11,7 +11,7 @@ import Tooltip from '@interads/ui/Tooltip'
 import Modal, { ModalBody, ModalFoot, ModalHead } from '@interads/ui/Modal'
 import { useAlert } from '@interads/ui/hook'
 import { WLTPagination } from '@interads/ui/Private'
-import { CheckBox } from '@interads/ui'
+import CheckBox from '@interads/ui/CheckBox'
 
 import { MagnifyingGlass, Question, UserCircle } from 'phosphor-react'
 
