@@ -7,6 +7,7 @@
   "license": "MIT",
   "main": "./src/index.ts",
   "scripts": {
+    "test": "jest --maxWorkers=1",
     "type-check": "tsc --noEmit",
     "prebuild": "rimraf lib tsconfig.build.tsbuildinfo && pnpm run type-check",
     "build": "pnpm run build:node && pnpm run build:stable && pnpm run build:umd && pnpm run build:types && pnpm run build:copy-files",
@@ -31,6 +32,27 @@
     "@types/react": {
       "optional": true
     }
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts",
+      "tsx"
+    ],
+    "rootDir": "src",
+    "moduleNameMapper": {
+      "^src/(.*)$": "<rootDir>/$1"
+    },
+    "testRegex": ".*\\.spec\\.tsx$",
+    "transform": {
+      "^.+\\.(t|j)sx$": "ts-jest"
+    },
+    "collectCoverageFrom": [
+      "**/*.(t|j)sx"
+    ],
+    "coverageDirectory": "../coverage",
+    "testEnvironment": "jsdom"
   },
   "publishConfig": {
     "access": "public"
