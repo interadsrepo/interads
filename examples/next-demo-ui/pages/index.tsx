@@ -14,6 +14,7 @@ import { WLTPagination } from '@interads/ui/Private'
 import CheckBox from '@interads/ui/CheckBox'
 
 import { MagnifyingGlass, Question, UserCircle } from 'phosphor-react'
+import Link from 'next/link'
 
 export default function Home() {
   const checkRef = React.useRef<null | HTMLInputElement>(null)
@@ -47,6 +48,12 @@ export default function Home() {
       </Head>
       <main>
         <h1>Demo</h1>
+        <Link href="/400">
+          <IconButton type="button" palette="secondary" size="xs">
+            <UserCircle weight="fill" />
+          </IconButton>
+        </Link>
+
         <CheckBox ref={checkRef} />
         <CheckBox disabled palette="primary" id="test" ref={checkRef} />
         <CheckBox disabled palette="info" ref={checkRef} />
