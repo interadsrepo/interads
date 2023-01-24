@@ -15,7 +15,6 @@
     "build-types": "lerna run --parallel --scope \"@interads/*\" build:types",
     "prepublish": "pnpm run build",
     "lint": "eslint . --cache --report-unused-disable-directives --ext .js,.ts,.tsx --max-warnings 0",
-    "publish": "cross-env HUSKY=0 lerna publish --no-private",
     "start": "pnpm --filter next-demo-ui run dev",
     "prepare": "husky install"
   },
