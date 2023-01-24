@@ -4,7 +4,7 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
-  transpilePackages: ['@interads/ui'],
+  transpilePackages: ['@interads/ui', '@interads/hook'],
 }
 
 module.exports = nextConfig
