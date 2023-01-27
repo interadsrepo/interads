@@ -9,7 +9,7 @@ import InputField from '@interads/ui/InputField'
 import TextView from '@interads/ui/TextView'
 import Tooltip from '@interads/ui/Tooltip'
 import Modal, { ModalBody, ModalFoot, ModalHead } from '@interads/ui/Modal'
-import { useAlert } from '@interads/ui/hook'
+import { useAlert, useToast } from '@interads/ui/hook'
 import { WLTPagination } from '@interads/ui/Private'
 import CheckBox from '@interads/ui/CheckBox'
 
@@ -17,6 +17,7 @@ import { MagnifyingGlass, Question, UserCircle } from 'phosphor-react'
 import Link from 'next/link'
 
 export default function Home() {
+  const { dispatch } = useToast()
   const checkRef = React.useRef<null | HTMLInputElement>(null)
   const alert = useAlert()
   const [{ page, total, perPage }, setPaginate] = React.useState<{
@@ -38,6 +39,42 @@ export default function Home() {
   }
   const [modal, setModal] = React.useState<string | null>(null)
   const [modalInside, setModalInside] = React.useState<boolean>(false)
+  function toastError() {
+    dispatch({
+      type: 'ADD',
+      payload: {
+        description: 'description error',
+        id: Math.random(),
+        title: 'Error',
+        type: 'error',
+      },
+    })
+  }
+
+  function toastInfo() {
+    dispatch({
+      type: 'ADD',
+      payload: {
+        description: 'description info',
+        id: Math.random(),
+        title: 'Info',
+        type: 'info',
+      },
+    })
+  }
+
+  function toastSuccess() {
+    dispatch({
+      type: 'ADD',
+      payload: {
+        description: 'description success',
+        id: Math.random(),
+        title: 'Success',
+        type: 'success',
+      },
+    })
+  }
+
   return (
     <React.Fragment>
       <Head>
@@ -67,19 +104,19 @@ export default function Home() {
             </Tooltip>
           </Box>
           <Box marginBottom="1rem" flexWrap="wrap" display="flex" alignItems="center" gap="1rem">
-            <Button type="button" palette="secondary" size="xs">
+            <Button type="button" palette="error" size="xs" onClick={toastError}>
               <UserCircle weight="fill" />
               Button Theme
             </Button>
-            <Button type="button" palette="secondary" variant="custom" size="sm">
+            <Button type="button" palette="info" variant="custom" size="sm" onClick={toastInfo}>
               <UserCircle weight="fill" />
               Button Theme
             </Button>
-            <Button type="button" palette="secondary" size="md">
+            <Button type="button" palette="success" size="md" onClick={toastSuccess}>
               <UserCircle weight="fill" />
               Button Theme
             </Button>
-            <Button type="button" palette="secondary" size="lg">
+            <Button type="button" palette="warning" size="lg">
               <UserCircle weight="fill" />
               Button Theme
             </Button>
