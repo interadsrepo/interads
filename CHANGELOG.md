@@ -1,5 +1,22 @@
 # [Versions](https://interads.co.id)
 
+## 0.16.0
+
+<!-- generated comparing v0.16.0..main -->
+
+_Jan 27, 2023_
+
+A big thanks to the 2 contributors who made this release possible. Here are some highlights:
+
+- &#8203;<!-- 6 -->docs(examples): demo using toast @pratamaizzat
+- &#8203;<!-- 5 -->feat(ui): new component added "TOAST" @pratamaizzat
+- &#8203;<!-- 3 -->fix(ui): move root styling modal @mehisana
+- &#8203;<!-- 1 -->fix(ui): fix height and width modal base @pratamaizzat
+
+All contributors of this release in alphabetical order: @mehisana, @pratamaizzat
+
+
+
 ## 0.14.0
 
 <!-- generated comparing v0.14.0..main -->

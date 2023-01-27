@@ -1,12 +1,12 @@
 {
   "name": "@interads/interads",
-  "version": "0.16.0",
+  "version": "0.17.0",
   "private": true,
   "description": "",
   "main": "index.js",
   "scripts": {
     "release:changelog": "node scripts/releaseChangelog.mjs",
-    "release:version": "lerna version --no-changelog --no-push --no-git-tag-version --ignore-changes '**'",
+    "release:version": "lerna version --no-changelog --no-push --no-git-tag-version",
     "release:build": "lerna run --parallel --scope \"@interads/*\" build",
     "release:publish": "cross-env HUSKY=0 lerna publish from-package --dist-tag latest --contents lib",
     "release:tag": "node scripts/releaseTag.mjs",
