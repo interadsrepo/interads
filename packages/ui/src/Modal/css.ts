@@ -27,8 +27,8 @@ export default styled('dialog')<ComponentProps>`
   bottom: 0;
   top: 0;
   left: 0;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   backdrop-filter: blur(0.25rem);
   background-color: rgba(0, 0, 0, 0.5);
   visibility: ${(props) => (!props.open ? 'hidden' : 'visible')};
