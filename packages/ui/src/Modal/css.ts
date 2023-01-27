@@ -185,16 +185,16 @@ export default styled('dialog')<ComponentProps>`
             : null}
         height: ${(props) => (props.fullWidth ? '100%' : 'auto')};
       }
-      ${({ theme }) => {
-        const customStyle = theme?.modal?.root
-        return customStyle ? css(customStyle) : null
-      }}
-      ${({ theme, variant }) => {
-        const customStyle = theme?.modal?.variant?.[variant.toString()]?.root
-        return customStyle ? css(customStyle) : null
-      }}
     }
   }
+  ${({ theme }) => {
+    const customStyle = theme?.modal?.root
+    return customStyle ? css(customStyle) : null
+  }}
+  ${({ theme, variant }) => {
+    const customStyle = theme?.modal?.variant?.[variant.toString()]?.root
+    return customStyle ? css(customStyle) : null
+  }}
 `
 export const IUModalHead = styled('div')<ModalHeadProps>`
   color: ${({ theme, color }) => (color ? theme.color[color] : 'inherit')};
