@@ -15,8 +15,6 @@ A big thanks to the 2 contributors who made this release possible. Here are some
 
 All contributors of this release in alphabetical order: @mehisana, @pratamaizzat
 
-
-
 ## 0.14.0
 
 <!-- generated comparing v0.14.0..main -->
