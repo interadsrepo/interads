@@ -27,8 +27,8 @@ export default styled('dialog')<ComponentProps>`
   bottom: 0;
   top: 0;
   left: 0;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   backdrop-filter: blur(0.25rem);
   background-color: rgba(0, 0, 0, 0.5);
   visibility: ${(props) => (!props.open ? 'hidden' : 'visible')};
@@ -185,16 +185,16 @@ export default styled('dialog')<ComponentProps>`
             : null}
         height: ${(props) => (props.fullWidth ? '100%' : 'auto')};
       }
-      ${({ theme }) => {
-        const customStyle = theme?.modal?.root
-        return customStyle ? css(customStyle) : null
-      }}
-      ${({ theme, variant }) => {
-        const customStyle = theme?.modal?.variant?.[variant.toString()]?.root
-        return customStyle ? css(customStyle) : null
-      }}
     }
   }
+  ${({ theme }) => {
+    const customStyle = theme?.modal?.root
+    return customStyle ? css(customStyle) : null
+  }}
+  ${({ theme, variant }) => {
+    const customStyle = theme?.modal?.variant?.[variant.toString()]?.root
+    return customStyle ? css(customStyle) : null
+  }}
 `
 export const IUModalHead = styled('div')<ModalHeadProps>`
   color: ${({ theme, color }) => (color ? theme.color[color] : 'inherit')};

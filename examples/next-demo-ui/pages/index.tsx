@@ -47,17 +47,17 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <h1>Demo</h1>
-        <Link href="/400">
-          <IconButton type="button" palette="secondary" size="xs">
-            <UserCircle weight="fill" />
-          </IconButton>
-        </Link>
-
-        <CheckBox ref={checkRef} />
-        <CheckBox disabled palette="primary" id="test" ref={checkRef} />
-        <CheckBox disabled palette="info" ref={checkRef} />
         <Box padding="1rem" fullWidth>
+          <h1>Demo</h1>
+          <Link href="/400">
+            <IconButton type="button" palette="secondary" size="xs">
+              <UserCircle weight="fill" />
+            </IconButton>
+          </Link>
+
+          <CheckBox ref={checkRef} />
+          <CheckBox disabled palette="primary" id="test" ref={checkRef} />
+          <CheckBox disabled palette="info" ref={checkRef} />
           <Box>
             <TextView>Hello this is me</TextView>
           </Box>
@@ -66,7 +66,7 @@ export default function Home() {
               <TextView>Hello hover me</TextView>
             </Tooltip>
           </Box>
-          <Box marginBottom="1rem" display="flex" alignItems="center" gap="1rem">
+          <Box marginBottom="1rem" flexWrap="wrap" display="flex" alignItems="center" gap="1rem">
             <Button type="button" palette="secondary" size="xs">
               <UserCircle weight="fill" />
               Button Theme
@@ -88,7 +88,7 @@ export default function Home() {
               Button Theme
             </Button>
           </Box>
-          <Box marginBottom="1rem" display="flex" alignItems="center" gap="1rem">
+          <Box marginBottom="1rem" flexWrap="wrap" display="flex" alignItems="center" gap="1rem">
             <Button type="button" palette="secondary" variant="outline" size="xs">
               <UserCircle weight="fill" />
               Button Theme
@@ -110,7 +110,7 @@ export default function Home() {
               Button Theme
             </Button>
           </Box>
-          <Box marginBottom="1rem" display="flex" alignItems="center" gap="1rem">
+          <Box marginBottom="1rem" flexWrap="wrap" display="flex" alignItems="center" gap="1rem">
             <IconButton type="button" palette="secondary" size="xs">
               <UserCircle weight="fill" />
             </IconButton>
@@ -127,7 +127,7 @@ export default function Home() {
               <UserCircle weight="fill" />
             </IconButton>
           </Box>
-          <Box marginBottom="1rem" display="flex" alignItems="center" gap="1rem">
+          <Box marginBottom="1rem" flexWrap="wrap" display="flex" alignItems="center" gap="1rem">
             <IconButton type="button" palette="secondary" variant="outline" size="xs">
               <UserCircle weight="fill" />
             </IconButton>
