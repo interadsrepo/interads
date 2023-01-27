@@ -2,7 +2,7 @@ import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 
 import { Poppins } from '@next/font/google'
-import { AlertProvider, UIThemeProvider, createTheme } from '@interads/ui'
+import { AlertProvider, UIThemeProvider, createTheme, Toast, ToastProvider } from '@interads/ui'
 
 const inter = Poppins({
   subsets: ['latin'],
@@ -25,9 +25,12 @@ const light = createTheme({
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <UIThemeProvider theme={light}>
-      <AlertProvider>
-        <Component {...pageProps} />
-      </AlertProvider>
+      <ToastProvider>
+        <Toast />
+        <AlertProvider>
+          <Component {...pageProps} />
+        </AlertProvider>
+      </ToastProvider>
     </UIThemeProvider>
   )
 }

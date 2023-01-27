@@ -35,3 +35,6 @@ export * from './Private'
 
 export { default as CheckBox } from './CheckBox'
 export * from './CheckBox'
+
+export { default as Toast } from './Toast'
+export * from './Toast'
