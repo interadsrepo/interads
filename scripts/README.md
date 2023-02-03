@@ -10,4 +10,4 @@
 5. `pnpm install`
 6. `pnpm release:build`
 7. `pnpm release:publish`
-8. `pnpm release:version`
+8. `pnpm release:tag`

@@ -28,5 +28,6 @@ export interface InputFieldProps
   startAddOn?: React.ReactNode
   endAddOn?: React.ReactNode
   status?: 'error' | 'success' | 'info' | 'warning' | null
-  autoComplete: string | undefined
+  autoComplete?: string
+  name?: string
 }
