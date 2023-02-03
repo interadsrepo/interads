@@ -6,8 +6,8 @@
 2. `pnpm release:version`
 3. Open pull request
 
-1. Merge PR
-2. `pnpm install`
-3. `pnpm release:build`
-4. `pnpm release:publish`
-5. `pnpm release:version`
+4. Merge PR
+5. `pnpm install`
+6. `pnpm release:build`
+7. `pnpm release:publish`
+8. `pnpm release:version`
