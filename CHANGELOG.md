@@ -1,5 +1,19 @@
 # [Versions](https://interads.co.id)
 
+## 0.17.0
+
+<!-- generated comparing v0.17.0..main -->
+
+_Feb 3, 2023_
+
+A big thanks to the 1 contributors who made this release possible. Here are some highlights:
+
+### UI
+
+- &#8203;<!-- 1 -->fix(ui): add documentation for release new version and add autoComplete on InputField @pratamaizzat
+
+All contributors of this release in alphabetical order: @pratamaizzat
+
 ## 0.16.0
 
 <!-- generated comparing v0.16.0..main -->
