@@ -3,7 +3,7 @@ import { BoxProps } from './props'
 import IABox from './css'
 import { getPropStyle } from '../util/helper'
 
-const Box: React.FC<BoxProps> = function Box(props: BoxProps) {
+const Box = React.forwardRef<HTMLDivElement, BoxProps>(function Box(props: BoxProps, ref) {
   const { children, fullWidth = false, variant = '', className, style, ...rest } = props
   const propStyle: React.CSSProperties = getPropStyle(rest)
   return (
@@ -13,10 +13,11 @@ const Box: React.FC<BoxProps> = function Box(props: BoxProps) {
       variant={variant}
       style={{ ...propStyle, ...style }}
       {...rest}
+      ref={ref}
     >
       {children}
     </IABox>
   )
-}
+})
 
 export default Box
