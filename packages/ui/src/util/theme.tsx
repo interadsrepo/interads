@@ -119,6 +119,10 @@ export interface Theme {
         body: string
         main: string
       }
+      info: {
+        body: string
+        main: string
+      }
     }
   }>
   modal?: Partial<{
@@ -186,6 +190,10 @@ export const defaultTheme: Theme = {
       warning: {
         body: '#FFF9EB',
         main: '#FEC124',
+      },
+      info: {
+        body: '#ECF8FE',
+        main: '#34B3F1',
       },
     },
   },

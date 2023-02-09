@@ -83,6 +83,7 @@ const Alert: React.FC<AlertProps> = function Alert({
           {variant === 'success' && <CheckCircle className="icon" />}
           {variant === 'error' && <WarningCircle className="icon" />}
           {variant === 'warning' && <Question className="icon" />}
+          {variant === 'info' && <WarningCircle className="icon" />}
         </span>
         <div className="alert-box-message">
           <h3 className="text text-title">{title}</h3>
