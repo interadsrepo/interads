@@ -4,28 +4,36 @@ import { CheckCircle, Question, WarningCircle } from '../icon'
 import IAToast from './css'
 
 const Toast: React.FC = function Toast() {
+  const [pause, setPause] = React.useState(false)
   const {
     toast: { toasts },
     dispatch,
   } = useToast()
 
   React.useEffect(() => {
-    const interval = setInterval(() => {
-      if (toasts.length) {
-        dispatch({
-          type: 'REMOVE',
-          payload: toasts[toasts.length - 1],
-        })
-      }
-    }, 2000)
+    let interval: NodeJS.Timer
+    if (!pause) {
+      interval = setInterval(() => {
+        if (toasts.length) {
+          dispatch({
+            type: 'REMOVE',
+            payload: toasts[toasts.length - 1],
+          })
+        }
+      }, 2000)
+    }
 
     return () => {
       clearInterval(interval)
     }
-  }, [toasts, dispatch])
+  }, [toasts, dispatch, pause])
 
   return (
-    <IAToast className="toast-container">
+    <IAToast
+      className="toast-container"
+      onMouseEnter={() => setPause(true)}
+      onMouseLeave={() => setPause(false)}
+    >
       {toasts.map((toast) => (
         <div key={toast.id} className={`toast-notification toast ${toast.type} `}>
           <span className="toast-icon">
