@@ -15,6 +15,7 @@ const IAToast = styled('div')`
   right: 1rem;
   top: 1rem;
   height: calc(100dvh - 1rem);
+  pointer-events: none;
   overflow-y: auto;
   animation: toast-in-right 0.7s;
   -ms-overflow-style: none; /* Internet Explorer 10+ */

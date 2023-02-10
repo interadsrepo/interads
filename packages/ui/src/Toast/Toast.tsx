@@ -29,13 +29,14 @@ const Toast: React.FC = function Toast() {
   }, [toasts, dispatch, pause])
 
   return (
-    <IAToast
-      className="toast-container"
-      onMouseEnter={() => setPause(true)}
-      onMouseLeave={() => setPause(false)}
-    >
+    <IAToast className="toast-container">
       {toasts.map((toast) => (
-        <div key={toast.id} className={`toast-notification toast ${toast.type} `}>
+        <div
+          onMouseEnter={() => setPause(true)}
+          onMouseLeave={() => setPause(false)}
+          key={toast.id}
+          className={`toast-notification toast ${toast.type} `}
+        >
           <span className="toast-icon">
             {toast.type === 'success' && <CheckCircle weight="fill" className="icon" />}
             {toast.type === 'error' && <WarningCircle weight="fill" className="icon" />}
