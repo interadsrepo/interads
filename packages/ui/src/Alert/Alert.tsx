@@ -21,6 +21,7 @@ const Alert: React.FC<AlertProps> = function Alert({
   onConfirm,
   onClose,
   open,
+  option,
 }: AlertProps) {
   const dialogRef = React.useRef<HTMLDialogElement>(null)
 
@@ -78,7 +79,7 @@ const Alert: React.FC<AlertProps> = function Alert({
       title={title}
       message={message}
     >
-      <div className={`alert ${variant || ''}`}>
+      <div className={`alert ${variant || ''} ${option?.type || ''}`.trim()}>
         <span className="alert-box-icon">
           {variant === 'success' && <CheckCircle className="icon" />}
           {variant === 'error' && <WarningCircle className="icon" />}
@@ -89,19 +90,38 @@ const Alert: React.FC<AlertProps> = function Alert({
           <h3 className="text text-title">{title}</h3>
           <p className="text text-message">{message}</p>
         </div>
-        <div className="alert-box-action">
-          {onCancel && (
-            <button type="button" className="button btn-cancel" onClick={onCancel}>
-              {textCancel || 'Cancel'}
-            </button>
-          )}
-
-          {onConfirm && (
-            <button type="button" className="button btn-next" onClick={onConfirm}>
-              {textConfirm || 'Yes, Sure'}
-            </button>
-          )}
-        </div>
+        {option?.type === 'default' && (
+          <div className="alert-box-action">
+            {onCancel && (
+              <button type="button" className="button btn-cancel" onClick={onCancel}>
+                {textCancel || 'Cancel'}
+              </button>
+            )}
+            {onConfirm && (
+              <button type="button" className="button btn-next" onClick={onConfirm}>
+                {textConfirm || 'Yes, Sure'}
+              </button>
+            )}
+          </div>
+        )}
+        {option?.type === 'backOnly' && (
+          <div className="alert-box-action">
+            {onCancel && (
+              <button type="button" className="button btn-next" onClick={onCancel}>
+                {textCancel || 'Cancel'}
+              </button>
+            )}
+          </div>
+        )}
+        {option?.type === 'doneOnly' && (
+          <div className="alert-box-action">
+            {onConfirm && (
+              <button type="button" className="button btn-next" onClick={onConfirm}>
+                {textConfirm || 'Yes, Sure'}
+              </button>
+            )}
+          </div>
+        )}
       </div>
     </StyledAlert>
   )

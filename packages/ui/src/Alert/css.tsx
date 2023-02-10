@@ -5,13 +5,15 @@ import { AlertPropsBase } from './props'
 type IABoxProps = Required<Pick<AlertPropsBase, 'variant' | 'message'>>
 
 const IAAlert = styled('dialog')<IABoxProps>`
-  --alert-width: 25rem;
-  --alert-height: 30rem;
-  --alert-icon-size: 11rem;
+  --alert-width: 18.75rem;
+  --alert-height: 21rem;
+  --alert-icon-size: 8rem;
+
   background: ${(props) => {
     const { variant, theme } = props
     return theme.alert?.variant?.[variant].body
   }};
+
   font: 100% ${({ theme }) => (theme.fontFamily ? theme.fontFamily : 'inherit')};
   border: none;
   outline: none;
@@ -34,79 +36,38 @@ const IAAlert = styled('dialog')<IABoxProps>`
     inset: 0;
     animation: fade-out 250ms forwards, scale-down 200ms forwards;
   }
-
   .alert {
     width: var(--alert-width);
-    height: var(--alert-height);
+    /* height: var(--alert-height); */
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     text-align: center;
-    padding: 4rem 1.5rem 1.5rem;
-
-    .icon {
-      display: block;
-
-      & polyline {
-        stroke: #ffffff;
-      }
-
-      & line {
-        stroke: #ffffff;
-      }
-
-      ${(props) => {
-        const { variant } = props
-        if (variant === 'error') {
-          return css`
-            & circle:last-child {
-              fill: white;
-            }
-          `
-        }
-
-        return null
-      }}
-
-      ${(props) => {
-        const { variant } = props
-        if (variant === 'warning') {
-          return css`
-            & circle:nth-child(3) {
-              fill: #ffffff;
-            }
-
-            & path {
-              stroke: #ffffff;
-            }
-          `
-        }
-
-        return null
-      }}
-    }
-
+    /* padding: 4rem 1.5rem 1.5rem; */
+    row-gap: 32px;
+    padding: 24px;
     .text {
-      margin-block-end: 0;
-      font-weight: 500;
+      margin: 0;
       color: #757575;
-      font-size: 1rem;
+      font-size: 14px;
+      line-height: 21px;
+      letter-spacing: 0.01em;
+      font-weight: 400;
     }
-
     .button {
       flex: 1;
       border: none;
       outline: none;
-      border-radius: 0.8rem;
-      padding: 0.5rem 2rem;
-      font-size: 1rem;
+      border-radius: 0.5rem;
+      padding: 8px 14px;
+      font-size: 14px;
       font-weight: 500;
+      line-height: 20px;
       background: #ffffff;
       cursor: pointer;
       transition: all 0.25s ease;
     }
-
     &-box-icon {
       position: relative;
       width: var(--alert-icon-size);
@@ -115,14 +76,13 @@ const IAAlert = styled('dialog')<IABoxProps>`
       align-items: center;
       justify-content: center;
       transition: all 0.5s ease;
-
       &::before {
         position: absolute;
         content: '';
         inset: 0;
         border-radius: 50%;
         background: #ffffff;
-        border: 0.625rem solid
+        border: calc(var(--alert-icon-size) / 18) solid
           ${(props) => {
             const { variant, theme } = props
             return theme.alert?.variant?.[variant].main
@@ -130,7 +90,6 @@ const IAAlert = styled('dialog')<IABoxProps>`
         z-index: -1;
         transition: all 0.5s ease;
       }
-
       & .icon,
       svg {
         color: ${(props) => {
@@ -144,28 +103,37 @@ const IAAlert = styled('dialog')<IABoxProps>`
         font-size: var(--alert-icon-size);
       }
     }
-
     &-box-message {
       width: 100%;
-
       & .text-title {
-        margin-block-end: 0.5rem;
         font-weight: 600;
-        font-size: 2rem;
+        font-size: 20px;
+        line-height: 30px;
+        text-align: center;
+        font-weight: 600;
+        margin-bottom: 8px;
         color: ${(props) => {
           const { variant, theme } = props
           return theme.alert?.variant?.[variant].main
         }};
       }
-    }
 
+      & .text-message {
+        &::-webkit-scrollbar {
+          display: none;
+        }
+        max-height: 54px;
+        overflow-y: auto;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    }
     &-box-action {
       width: 100%;
       display: flex;
       align-items: stretch;
       gap: 0.5rem;
       flex-wrap: wrap;
-
       & .btn-view {
         background-color: ${(props) => {
           const { variant, theme } = props
@@ -173,7 +141,6 @@ const IAAlert = styled('dialog')<IABoxProps>`
         }};
         color: #ffffff;
       }
-
       & .btn-view:hover {
         background-color: ${(props) => {
           const { variant, theme } = props
@@ -182,7 +149,6 @@ const IAAlert = styled('dialog')<IABoxProps>`
             .toHexString()
         }};
       }
-
       & .btn-cancel {
         color: ${(props) => {
           const { variant, theme } = props
@@ -190,11 +156,9 @@ const IAAlert = styled('dialog')<IABoxProps>`
         }};
         background-color: #ffffff;
       }
-
       & .btn-cancel:hover {
         background-color: ${tinycolor('#ffffff').brighten(10).toHexString()};
       }
-
       & .btn-next {
         background-color: ${(props) => {
           const { variant, theme } = props
@@ -202,7 +166,6 @@ const IAAlert = styled('dialog')<IABoxProps>`
         }};
         color: #ffffff;
       }
-
       & .btn-next:hover {
         background-color: ${(props) => {
           const { variant, theme } = props

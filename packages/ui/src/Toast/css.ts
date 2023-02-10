@@ -2,15 +2,24 @@ import styled from 'styled-components'
 import tinycolor from 'tinycolor2'
 
 const IAToast = styled('div')`
-  --toast-width: 22rem;
+  --toast-width: 21rem;
   --toast-height: 4.875rem;
+
+  &::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
 
   box-sizing: border-box;
   position: fixed;
   z-index: 999999999999999999999999;
   right: 1rem;
   top: 1rem;
+  height: calc(100dvh - 1rem);
+  pointer-events: none;
+  overflow-y: auto;
   animation: toast-in-right 0.7s;
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
 
   .toast-notification .icon {
     display: block;

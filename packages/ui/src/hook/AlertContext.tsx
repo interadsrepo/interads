@@ -61,6 +61,10 @@ const AlertProvider: React.FC<AlertProviderProps> = function AlertProvider({
       <Alert
         open={!!alertProps}
         variant={alertProps?.variant}
+        option={{
+          ...alertProps?.option,
+          type: alertProps?.option?.type || 'default',
+        }}
         title={alertProps?.title || ''}
         message={alertProps?.message || ''}
         textCancel={alertProps?.textCancel}
