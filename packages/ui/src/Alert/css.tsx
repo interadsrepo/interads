@@ -120,12 +120,12 @@ const IAAlert = styled('dialog')<IABoxProps>`
 
       & .text-message {
         &::-webkit-scrollbar {
-          display: none; /* Safari and Chrome */
+          display: none;
         }
         max-height: 54px;
         overflow-y: auto;
-        -ms-overflow-style: none; /* Internet Explorer 10+ */
-        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none;
+        scrollbar-width: none;
       }
     }
     &-box-action {
