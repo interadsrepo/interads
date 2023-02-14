@@ -19,7 +19,9 @@
       "@interads/util": ["./packages/util/src"],
       "@interads/util/*": ["./packages/util/src/*"],
       "@interads/hook": ["./packages/hook/src"],
-      "@interads/hook/*": ["./packages/hook/src/*"]
+      "@interads/hook/*": ["./packages/hook/src/*"],
+      "@interads/table": ["./packages/table/src"],
+      "@interads/table/*": ["./packages/table/src/*"]
     },
     // Otherwise we get react-native typings which conflict with dom.lib.
     "types": ["node", "react", "react-is/next"]

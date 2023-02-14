@@ -12,9 +12,28 @@ import Modal, { ModalBody, ModalFoot, ModalHead } from '@interads/ui/Modal'
 import { useAlert, useToast } from '@interads/ui/hook'
 import { WLTPagination } from '@interads/ui/Private'
 import CheckBox from '@interads/ui/CheckBox'
+import { createColumnHelper } from '@interads/table'
 
 import { MagnifyingGlass, Question, UserCircle } from 'phosphor-react'
 import Link from 'next/link'
+
+type Person = {
+  personId: number
+  name: string
+  email: string
+  confirmed: boolean
+}
+
+const data: Person[] = [
+  {
+    personId: 1,
+    confirmed: false,
+    email: 'test1@email.com',
+    name: 'test 1 user',
+  },
+]
+
+const columnHelper = createColumnHelper<Person>()
 
 export default function Home() {
   const { dispatch } = useToast()
@@ -448,6 +467,8 @@ export default function Home() {
           </ModalBody>
           <ModalFoot>Modal Scroll Foot</ModalFoot>
         </Modal>
+        {JSON.stringify(data)}
+        {JSON.stringify(columnHelper)}
       </main>
     </React.Fragment>
   )
