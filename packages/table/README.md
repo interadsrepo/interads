@@ -36,9 +36,9 @@ const data: Person[] = [
 const columnHelper = createColumnHelper<Person>()
 
 const columns = [
-  columnHelper.accessor('name', {
-    // ... options like head, column, etc
-  })
+  columnHelper.accessor("name", {
+    cell: (info) => info.getValue(),
+  }),
 ]
 
 
