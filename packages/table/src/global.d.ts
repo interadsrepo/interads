@@ -3,28 +3,29 @@ import type { CoreColumn } from './core/column'
 import type { CoreHeader, CoreHeaderGroup, HeadersInstance, HeaderContext } from './core/header'
 import type { CoreRow } from './core/row'
 import type { CoreInstance, CoreOptions, CoreTableState } from './core/table'
+import type { GroupingTableState, GroupingOptions } from './features/grouping'
 import type {
-  RowSelectionInstance,
-  RowSelectionOptions,
-  RowSelectionRow,
-  RowSelectionTableState,
-} from './features/rowSelection'
+  ColumnOrderInstance,
+  ColumnOrderTableState,
+  ColumnOrderOptions,
+} from './features/ordering'
 
-interface CompleteInitialTableState extends CoreTableState, RowSelectionTableState {}
+interface CompleteInitialTableState extends CoreTableState {}
 
 export interface RowModel<T extends RowData> {
   rows: Row<T>[]
   flatRows: Row<T>[]
   rowsById: Record<string, Row<T>>
 }
+export interface AggregationFns {}
 
 export interface TableMeta {}
 export interface InitialTableState extends Partial<CompleteInitialTableState> {}
-export interface TableState extends CoreTableState, RowSelectionTableState {}
+export interface TableState extends CoreTableState, ColumnOrderTableState, GroupingTableState {}
 export interface Table<T extends RowData>
   extends CoreInstance<T>,
     HeadersInstance<T>,
-    RowSelectionInstance<T> {}
+    ColumnOrderInstance<T> {}
 
 export type PartialKeys<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>
 export type RequiredKeys<T, K extends keyof T> = Omit<T, K> & Required<Pick<T, K>>
@@ -33,15 +34,15 @@ export type NoInfer<T> = [T][T extends any ? 0 : never]
 export type Getter<V> = <TValue = V>() => NoInfer<TValue>
 
 export interface Cell<T extends RowData, V> extends CoreCell<T, V> {}
-export interface Row<T extends RowData> extends CoreRow<T>, RowSelectionRow {}
+export interface Row<T extends RowData> extends CoreRow<T> {}
 
 export type Updater<T> = T | ((old: T) => T)
 export type OnChangeFn<T> = (updaterOrValue: Updater<T>) => void
 export type RowData = unknown | object | any[]
 
-export interface FeatureOptions<T extends RowData> extends RowSelectionOptions<T> {}
+export interface FeatureOptions extends ColumnOrderOptions, GroupingOptions {}
 
-export type TableOptionsResolved<T extends RowData> = CoreOptions<T> & FeatureOptions<T>
+export type TableOptionsResolved<T extends RowData> = CoreOptions<T> & FeatureOptions
 
 export interface TableOptions<T extends RowData>
   extends PartialKeys<TableOptionsResolved<T>, 'state' | 'onStateChange' | 'renderFallbackValue'> {}
@@ -163,3 +164,15 @@ type ComputeRange<N extends number, Result extends Array<unknown> = []> = Result
   ? Result
   : ComputeRange<N, [...Result, Result['length']]>
 type Index40 = ComputeRange<40>[number]
+
+export type ColumnDefResolved<TData extends RowData, TValue = unknown> = Partial<
+  UnionToIntersection<ColumnDef<TData, TValue>>
+> & {
+  accessorKey?: string
+}
+
+export type UnionToIntersection<T> = (T extends any ? (x: T) => any : never) extends (
+  x: infer R,
+) => any
+  ? R
+  : never
