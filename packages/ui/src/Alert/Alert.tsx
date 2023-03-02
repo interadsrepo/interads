@@ -1,7 +1,8 @@
 import * as React from 'react'
 import { AlertPropsBase } from './props'
 import StyledAlert from './css'
-import { CheckCircle, WarningCircle, Question } from '../icon'
+import IconAlert from './IconAlert'
+import ActionAlert from './ActionAlert'
 
 export interface AlertProps extends AlertPropsBase {
   open?: boolean
@@ -11,7 +12,7 @@ export interface AlertProps extends AlertPropsBase {
 }
 
 const Alert: React.FC<AlertProps> = function Alert({
-  variant,
+  variant = 'success',
   title,
   message,
   textCancel,
@@ -75,53 +76,25 @@ const Alert: React.FC<AlertProps> = function Alert({
     <StyledAlert
       ref={dialogRef}
       data-role="backdrop"
-      variant={variant || 'success'}
+      variant={variant}
       title={title}
       message={message}
     >
       <div className={`alert ${variant || ''} ${option?.type || ''}`.trim()}>
         <span className="alert-box-icon">
-          {variant === 'success' && <CheckCircle className="icon" />}
-          {variant === 'error' && <WarningCircle className="icon" />}
-          {variant === 'warning' && <Question className="icon" />}
-          {variant === 'info' && <WarningCircle className="icon" />}
+          {option?.icon ? option.icon : <IconAlert lookup={variant} />}
         </span>
         <div className="alert-box-message">
           <h3 className="text text-title">{title}</h3>
           <p className="text text-message">{message}</p>
         </div>
-        {option?.type === 'default' && (
-          <div className="alert-box-action">
-            {onCancel && (
-              <button type="button" className="button btn-cancel" onClick={onCancel}>
-                {textCancel || 'Cancel'}
-              </button>
-            )}
-            {onConfirm && (
-              <button type="button" className="button btn-next" onClick={onConfirm}>
-                {textConfirm || 'Yes, Sure'}
-              </button>
-            )}
-          </div>
-        )}
-        {option?.type === 'backOnly' && (
-          <div className="alert-box-action">
-            {onCancel && (
-              <button type="button" className="button btn-next" onClick={onCancel}>
-                {textCancel || 'Cancel'}
-              </button>
-            )}
-          </div>
-        )}
-        {option?.type === 'doneOnly' && (
-          <div className="alert-box-action">
-            {onConfirm && (
-              <button type="button" className="button btn-next" onClick={onConfirm}>
-                {textConfirm || 'Yes, Sure'}
-              </button>
-            )}
-          </div>
-        )}
+        <ActionAlert
+          lookup={option?.type || 'default'}
+          onCancel={onCancel}
+          onConfirm={onConfirm}
+          textCancel={textCancel}
+          textConfirm={textConfirm}
+        />
       </div>
     </StyledAlert>
   )

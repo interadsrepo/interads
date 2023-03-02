@@ -9,9 +9,9 @@ const IAAlert = styled('dialog')<IABoxProps>`
   --alert-height: 21rem;
   --alert-icon-size: 8rem;
 
-  background: ${(props) => {
+  background-color: ${(props) => {
     const { variant, theme } = props
-    return theme.alert?.variant?.[variant].body
+    return theme.alert?.variant?.[variant]?.body
   }};
 
   font: 100% ${({ theme }) => (theme.fontFamily ? theme.fontFamily : 'inherit')};
@@ -34,17 +34,14 @@ const IAAlert = styled('dialog')<IABoxProps>`
     display: block;
     pointer-events: none;
     inset: 0;
-    animation: fade-out 250ms forwards, scale-down 200ms forwards;
+    animation: fade-out 0ms forwards;
   }
   .alert {
     width: var(--alert-width);
-    /* height: var(--alert-height); */
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* justify-content: space-between; */
     text-align: center;
-    /* padding: 4rem 1.5rem 1.5rem; */
     row-gap: 32px;
     padding: 24px;
     .text {
@@ -85,7 +82,7 @@ const IAAlert = styled('dialog')<IABoxProps>`
         border: calc(var(--alert-icon-size) / 18) solid
           ${(props) => {
             const { variant, theme } = props
-            return theme.alert?.variant?.[variant].main
+            return theme.alert?.variant?.[variant]?.main
           }};
         z-index: -1;
         transition: all 0.5s ease;
@@ -94,11 +91,11 @@ const IAAlert = styled('dialog')<IABoxProps>`
       svg {
         color: ${(props) => {
           const { variant, theme } = props
-          return theme.alert?.variant?.[variant].main
+          return theme.alert?.variant?.[variant]?.main
         }};
         fill: ${(props) => {
           const { variant, theme } = props
-          return theme.alert?.variant?.[variant].main
+          return theme.alert?.variant?.[variant]?.main
         }};
         font-size: var(--alert-icon-size);
       }
@@ -114,7 +111,7 @@ const IAAlert = styled('dialog')<IABoxProps>`
         margin-bottom: 8px;
         color: ${(props) => {
           const { variant, theme } = props
-          return theme.alert?.variant?.[variant].main
+          return theme.alert?.variant?.[variant]?.main
         }};
       }
 
@@ -137,14 +134,14 @@ const IAAlert = styled('dialog')<IABoxProps>`
       & .btn-view {
         background-color: ${(props) => {
           const { variant, theme } = props
-          return theme.alert?.variant?.[variant].main
+          return theme.alert?.variant?.[variant]?.main
         }};
         color: #ffffff;
       }
       & .btn-view:hover {
         background-color: ${(props) => {
           const { variant, theme } = props
-          return tinycolor(theme.alert?.variant?.[variant].main || '#00000')
+          return tinycolor(theme.alert?.variant?.[variant]?.main || '#00000')
             .brighten(10)
             .toHexString()
         }};
@@ -152,7 +149,7 @@ const IAAlert = styled('dialog')<IABoxProps>`
       & .btn-cancel {
         color: ${(props) => {
           const { variant, theme } = props
-          return theme.alert?.variant?.[variant].main
+          return theme.alert?.variant?.[variant]?.main
         }};
         background-color: #ffffff;
       }
@@ -162,14 +159,14 @@ const IAAlert = styled('dialog')<IABoxProps>`
       & .btn-next {
         background-color: ${(props) => {
           const { variant, theme } = props
-          return theme.alert?.variant?.[variant].main
+          return theme.alert?.variant?.[variant]?.main
         }};
         color: #ffffff;
       }
       & .btn-next:hover {
         background-color: ${(props) => {
           const { variant, theme } = props
-          return tinycolor(theme.alert?.variant?.[variant].main || '#00000')
+          return tinycolor(theme.alert?.variant?.[variant]?.main || '#00000')
             .brighten(10)
             .toHexString()
         }};
