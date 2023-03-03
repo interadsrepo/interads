@@ -13,7 +13,7 @@ import { useAlert, useToast } from '@interads/ui/hook'
 import { WLTPagination } from '@interads/ui/Private'
 import CheckBox from '@interads/ui/CheckBox'
 
-import { MagnifyingGlass, Question, UserCircle } from 'phosphor-react'
+import { MagnifyingGlass, Question, UserCircle, Info } from 'phosphor-react'
 import Link from 'next/link'
 
 export default function Home() {
@@ -35,6 +35,9 @@ export default function Home() {
       title: 'Alert!',
       message: 'Message of alert here!!!',
       variant,
+      option: {
+        icon: <Info weight="fill" className="icon" />,
+      },
     }).then(() => {})
   }
   const [modal, setModal] = React.useState<string | null>(null)
